@@ -1,27 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import FooterTabs from './components/FooterTabs.js'
+import Register from './components/Register.js'
 
 
 export default class App extends React.Component {
 
-  _onPressButton() {
-    Alert.alert('You tapped the button!')
-  }
+  // _onPressButton() {
+  //   Alert.alert('You tapped the button!')
+  // }
 
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>WHOA BUDDY!</Text>
-          <Button
-              onPress={this._onPressButton}
-              title="Press Me"
-            />
+        <Text>Currently testing registration form...</Text>
+        <Register/>
         <FooterTabs />
       </View>
-
     );
   }
 }
