@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { MapView } from 'expo';
 
+
+
+
 class SearchMap extends React.Component {
 
 

@@ -18,13 +18,6 @@ const TabIcon = ({ selected, title }) => {
   );
 }
 
-const TabPlusIcon = ({ selected, title }) => {
-  return (
-    <Icon name="ios-add-circle" />
-  );
-}
-
-
 
 export default class App extends React.Component {
 
@@ -94,7 +87,7 @@ export default class App extends React.Component {
             </Scene>
 
           </Scene>
-        
+
       </Router>
     );
   }
