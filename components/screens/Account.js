@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
 
-const Account = () => {
+class Account extends Component {
+  render () {
   return (
     <View style={styles.container}>
       <Text
@@ -23,6 +21,7 @@ const Account = () => {
       </Text>
     </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

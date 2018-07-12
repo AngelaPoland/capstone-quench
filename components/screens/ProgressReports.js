@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const ProgressReports = () => {
+class ProgressReports extends Component {
+  render () {
+
   return (
     <View style={styles.container}>
       <Text
@@ -17,6 +19,7 @@ const ProgressReports = () => {
       </Text>
     </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

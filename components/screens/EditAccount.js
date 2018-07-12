@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const EditAccount = () => {
+class EditAccount extends Component {
+  render () {
+
   return (
     <View style={styles.container}>
       <Text
@@ -17,6 +19,7 @@ const EditAccount = () => {
       </Text>
     </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

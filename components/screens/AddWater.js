@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const AddWater = () => {
+class AddWater extends Component {
+  render () {
+
   return (
     <View style={styles.container}>
       <Text
@@ -17,6 +19,7 @@ const AddWater = () => {
       </Text>
     </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

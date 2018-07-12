@@ -6,17 +6,20 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const Today = () => {
-  return (
-    <View style={styles.container}>
+class Today extends Component {
+  render () {
+
+    return (
+      <View style={styles.container}>
       <Text
-        style={styles.welcome}
-        // onPress={() => Actions.account()}
+      style={styles.welcome}
+      // onPress={() => Actions.account()}
       >
-        Today Page
+      Today Page
       </Text>
-    </View>
-  );
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
