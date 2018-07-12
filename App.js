@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Account from './components/screens/Account.js'
@@ -12,10 +13,17 @@ import ProgressReports from './components/screens/ProgressReports.js'
 import SearchMap from './components/screens/SearchMap.js'
 
 
-const TabIcon = ({ selected, title }) => {
-  return (
-    <Text style={{ color: selected ? 'red' : 'black' }}>{title}</Text>
-  );
+class TabIcon extends React.Component {
+  static propTypes = {
+    iconName: PropTypes.string.isRequired,
+  }
+  render() {
+    return (
+      <View >
+        <Icon name={this.props.iconName}/>
+      </View>
+    );
+  }
 }
 
 
@@ -36,7 +44,7 @@ export default class App extends React.Component {
             tabs={true}
             tabBarStyle={{ backgroundColor: '#FFFFFF' }}
             >
-            <Scene key="accountTab" title="Account" icon={TabIcon}>
+            <Scene key="accountTab" title="Account" iconName="user" icon={TabIcon}>
               <Scene key="account"
                 component={Account}
                 title="Account Page"
@@ -54,7 +62,7 @@ export default class App extends React.Component {
                 />
             </Scene>
 
-            <Scene key="todayTab" title="Today" icon={TabIcon}>
+            <Scene key="todayTab" title="Today" iconName="tint" icon={TabIcon}>
               <Scene key="today"
                 component={Today}
                 title="Today Page"
@@ -62,7 +70,8 @@ export default class App extends React.Component {
                 />
             </Scene>
 
-            <Scene key="addTab" title="Add" icon={TabIcon}>
+            <Scene key="addTab" title="Add" iconName="plus-circle"
+              icon={TabIcon}>
               <Scene key="account"
                 component={AddWater}
                 title="Add Water Intake Page"
@@ -70,7 +79,7 @@ export default class App extends React.Component {
                 />
             </Scene>
 
-            <Scene key="ProgressReportTab" title="Track" icon={TabIcon}>
+            <Scene key="ProgressReportTab" title="Track" iconName="bar-chart" icon={TabIcon}>
               <Scene key="report"
                 component={ProgressReports}
                 title="Progress Report Page"
@@ -78,7 +87,7 @@ export default class App extends React.Component {
                 />
             </Scene>
 
-            <Scene key="findTab" title="Find" icon={TabIcon}>
+            <Scene key="findTab" title="Find" iconName="map" icon={TabIcon}>
               <Scene key="find"
                 component={SearchMap}
                 title="Find Water Fountains Page"
