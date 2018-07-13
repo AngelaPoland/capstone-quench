@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
 import {
-  AppRegistry,
   StyleSheet,
   Alert,
   Text,
   View,
-  Image,
   TextInput,
-  Button,
   TouchableHighlight,
-  DatePickerIOS,
 } from 'react-native';
 
 
@@ -23,8 +19,7 @@ class Register extends Component {
       name: "",
       age: "",
       weight: "",
-      password: "",
-      password_confirmation: "",
+      goal: "",
     };
 
   }
@@ -60,16 +55,10 @@ class Register extends Component {
           style={styles.input} keyboardType='numeric' placeholder="Weight(lbs)">
         </TextInput>
         <TextInput
-          onChangeText={ (text)=> this.setState({password: text}) }
+          onChangeText={ (text)=> this.setState({goal: text}) }
           style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}>
-        </TextInput>
-        <TextInput
-          onChangeText={ (text)=> this.setState({password_confirmation: text}) }
-          style={styles.input}
-          placeholder="Confirm Password"
-          secureTextEntry={true}>
+          placeholder="Goal in Oz"
+          keyboardType='numeric'>
         </TextInput>
         <TouchableHighlight onPress={this._onPressButton} style={styles.button}>
           <Text style={styles.buttonText}>

@@ -3,7 +3,15 @@
     "sdkVersion": "27.0.0",
     "splash": {
       "image": "./assets/splash.png",
-      "backgroundColor": "#3D73A9"
+      "backgroundColor": "blue",
     }
   },
+  "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSAppTransportSecurity" : {
+          "NSAllowsArbitraryLoads" : ""
+        }
+      }
+    }
 }
