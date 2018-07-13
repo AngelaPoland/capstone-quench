@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
 
 class Today extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      goals:[]
+    }
+  }
+
+  componentDidMount = () => {
+    console.log('Component did mount WAS CALLED');
+
+    axios.get('http://172.24.22.249:3000/users/1/goal')
+    .then( (response) => {
+      console.log(response);
+      this.setState({
+        goals: response.data
+      });
+    })
+    .catch( (error) => {
+      console.log(error);
+      console.log(error.message);
+    });
+  }
+
+
   render () {
 
     return (
@@ -17,6 +39,8 @@ class Today extends Component {
       >
       Today Page
       </Text>
+      <Text>Drank so far today:</Text>
+      <Text>{this.state.goals.amount_drank_today}oz</Text>
       </View>
     );
   }

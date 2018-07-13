@@ -25,7 +25,7 @@ class Register extends Component {
   }
 
   _onPressButton() {
-    Alert.alert('Registration stuff will happen!')
+    Alert.alert('Info will be updated, eventually!')
   }
 
   onRegisterPressed() {
