@@ -8,7 +8,8 @@ class Today extends Component {
   constructor(){
     super();
     this.state = {
-      goals:[]
+      goals:[],
+      value: 0,
     }
   }
 
@@ -20,6 +21,9 @@ class Today extends Component {
       console.log(response);
       this.setState({
         goals: response.data
+      });
+      this.setState({
+        value: response.data.percent_drank_towards_goal
       });
     })
     .catch( (error) => {
@@ -41,6 +45,7 @@ class Today extends Component {
       </Text>
       <Text>Drank so far today:</Text>
       <Text>{this.state.goals.amount_drank_today}oz</Text>
+      <Text>Percent drank today: {this.state.value}</Text>
       </View>
     );
   }
