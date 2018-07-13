@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
 
 class ProgressReports extends Component {
   render () {
 
   return (
-    <View style={styles.container}>
-      <Text
-        style={styles.welcome}
-        // onPress={() => Actions.account()}
-      >
-        Progress Report Page
-      </Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+
+      <Text style={styles.welcome}>Progress Report Page</Text>
+
+    </ScrollView>
   );
 }
 }

@@ -3,7 +3,7 @@
     "sdkVersion": "27.0.0",
     "splash": {
       "image": "./assets/splash.png",
-      "backgroundColor": "blue",
+      "backgroundColor": "#0C1EFA",
     }
   },
   "ios": {
