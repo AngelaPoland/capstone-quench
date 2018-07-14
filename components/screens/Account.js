@@ -42,7 +42,7 @@ class Account extends Component {
 
     render () {
 
-      
+
 
       return (
         <View style={styles.container}>
@@ -55,7 +55,7 @@ class Account extends Component {
 
 
           <Text style={styles.goal}> Your Daily Goal: {this.state.customer.goal}oz</Text>
-
+          <View style={styles.buttonLocation}>
           <Text
           style={styles.welcome}
           onPress={() => Actions.editAccount()}
@@ -68,6 +68,7 @@ class Account extends Component {
           >
           Press me to Create Notifications
           </Text>
+          </View>
         </View>
       );
     }
@@ -75,35 +76,40 @@ class Account extends Component {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 2,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#331494',
+      backgroundColor: '#E5F6F8',
     },
     welcome: {
       fontSize: 20,
       textAlign: 'center',
       margin: 10,
-      color: '#ffffff',
+      color: '#331494',
       borderWidth: 2,
-      borderColor: 'white',
+      borderColor: '#331494',
     },
     userInfo: {
       fontSize: 30,
-      color: '#ffffff',
+      color: '#331494',
       textAlign: 'center',
       borderWidth: 1,
-      borderColor: 'green',
+      borderColor: '#0D3CA7',
       padding: 2,
     },
     goal: {
       fontSize: 40,
-      color: 'red',
+      color: '#1255EF',
       textAlign: 'center',
     },
     userContainer: {
       borderColor: 'green',
       borderWidth: 1,
+    },
+    buttonLocation: {
+      position: 'absolute',
+      bottom: 0,
+
     }
   });
 
