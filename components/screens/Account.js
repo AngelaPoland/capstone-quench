@@ -26,7 +26,7 @@ class Account extends Component {
   componentDidMount = () => {
     console.log('Component did mount WAS CALLED');
 
-    axios.get('http://172.24.22.249:3000/users/1')
+    axios.get('http://192.168.1.5:3000/users/1')
     .then( (response) => {
       console.log(response);
       this.setState({
