@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, Picker, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableHighlight, Picker, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import axios from 'axios';
 
 class AddWater extends Component {
@@ -8,17 +8,17 @@ class AddWater extends Component {
     super();
 
     this.state = {
-      amount:'',
-      measurement: ''
+      amount: null,
+      measurement: '',
+      placeholder: 'Amount'
     };
   }
 
   addIntake = (amount) => {
-
-    axios.post(`http://localhost:3000/users/1/intakes?amount=${ amount }`)
+    axios.post(`http://172.24.22.249:3000/users/1/intakes?amount=${amount}`)
     .then((response) => {
       console.log(response.data)
-     })
+    })
     .catch((error) => {
       console.log(error)
     })
@@ -26,81 +26,131 @@ class AddWater extends Component {
 
   clearForm = () => {
     this.setState({
-      amount: 0,
+      amount: null,
       measurement: '',
     })
   }
 
-  updateMeasurement = (measurement) => {
-    this.setState({ measurement: measurement})
-  }
+  // updateMeasurement = (measurement) => {
+  //   this.setState({ measurement: measurement})
+  // }
 
-  onFormSubmit = (event) => {
-    event.preventDefault();
-      if (this.state.measurement == 'OZ') {
-        this.setState.amount = this.state.amount
-      }
-      else if (this.state.measurement == 'CUPS') {
-        this.setState.amount = this.state.amount * 8
-      }
-      else if (this.state.measurement == 'GLASSES') {
-        this.setState.amount = this.state.amount * 16
+  onFormSubmit = () => {
+    console.log(this.state.amount);
+      let amount = this.state.amount
+
+      if (this.state.measurement == 'CUPS') {
+        amount = amount * 8
+      } else if (this.state.measurement == 'GLASSES') {
+        amount = amount * 16
       }
 
-       this.addIntake(this.state.amount)
-       this.clearForm()
+       this.addIntake(amount);
+       this.clearForm();
   }
 
-  onFieldChange = (event) => {
-    const fieldName = event.target.name;
-    const fieldValue = event.target.value;
-    const updateState = {};
-    updateState[fieldName] = fieldValue;
-    this.setState(updateState);
-  }
+  // onFormSubmit = () => {
+  //   console.log(this.state.amount);
+  //
+  //   if (this.state.measurement === 'OZ') {
+  //     this.addIntake(this.state.amount)
+  //     this.clearForm()
+  //   }
+  //   else if (this.state.measurement === 'CUPS') {
+  //     // this.setState.amount = (this.state.amount * 8)
+  //     // this.addIntake(this.state.amount)
+  //     // this.clearForm()
+  //     this.setState({
+  //       amount: this.state.amount * 8,
+  //       }, () => {
+  //         this.addIntake(this.state.amount)
+  //         this.clearForm()
+  //       });
+  //     }
+  //   else if (this.state.measurement === 'GLASSES') {
+  //     this.setState({
+  //       amount: this.state.amount * 16,
+  //       }, () => {
+  //         this.addIntake(this.state.amount)
+  //         this.clearForm()
+  //       });
+  //   }
+  // }
+
+  // this.setState({
+  //   data: newData
+  // }, () => {
+  //   //TODO: Do something with this.state here
+  // });
+
+  // onFieldChange = (event) => {
+  //   const fieldName = event.target.name;
+  //   const fieldValue = event.target.value;
+  //   const updateState = {};
+  //   updateState[fieldName] = fieldValue;
+  //   this.setState(updateState);
+  // }
 
   _onPressButton() {
     Alert.alert('Info will be updated, eventually!')
   }
 
+  updateMeasurement = (measurement) => {
+    this.setState({ measurement: measurement })
+  }
+
+  updateAmount = (value) => {
+    this.setState({ amount: value })
+  }
+
+  seeState = () => {
+    console.log(this.state);
+  }
+
 
   render () {
 
-  return (
-    <View style={styles.container}>
+    return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.heading}>I just drank this much water:</Text>
-        <TextInput
-          onChangeText={ (amount)=> this.setState({name: amount}) }
-          style={styles.input} keyboardType='numeric' placeholder="Amount">
-        </TextInput>
+      <Text style={styles.heading}>I just drank this much water:</Text>
+      <TextInput
+      onChangeText={this.updateAmount}
+      style={styles.input} keyboardType='numeric' placeholder={this.state.placeholder} value={this.state.amount}>
+      </TextInput>
 
-        <View style={styles.picker}>
-          <Text style={styles.welcome}>Please pick the measurement:</Text>
-          <Picker
-            selectedValue = {this.state.measurement}
-            onValueChange = {this.updateMeasurement}
-            style={{height: 100, width: 100}}>
-            <Picker.Item label = "OZ" value = "OZ" />
-            <Picker.Item label = "CUP(S)" value = "CUPS" />
-            <Picker.Item label = "GLASSES" value = "GLASSES" />
-          </Picker>
-        </View>
+      <View style={styles.picker}>
+      <Text style={styles.welcome}>Please pick the measurement:</Text>
 
-        <TouchableHighlight onPress={this._onPressButton} style={styles.button}>
-          <Text style={styles.buttonText}>
-            Add Water Entry
-          </Text>
-        </TouchableHighlight>
+      <Picker
+      selectedValue={this.state.measurement}
+      onValueChange={(value) => {
+        console.log(value);
+        this.updateMeasurement(value);
+      }}
+      style={{height: 100, width: 100}}>
+      <Picker.Item label = "OZ" value = "OZ" />
+      <Picker.Item label = "CUP(S)" value = "CUPS" />
+      <Picker.Item label = "GLASSES" value = "GLASSES" />
+      </Picker>
+
       </View>
-    </View>
-  );
-}
+
+      <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
+      <Text style={styles.buttonText}>
+      Add Water Entry
+      </Text>
+      </TouchableHighlight>
+      <View style={{height: 10}}> </View>
+      </View>
+      </TouchableWithoutFeedback>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#236F76',
@@ -144,6 +194,10 @@ const styles = StyleSheet.create({
     color: '#FFF',
     alignSelf: 'center'
   },
+  picker: {
+    flex: 1,
+    textAlign: 'center'
+  }
 });
 
 export default AddWater;

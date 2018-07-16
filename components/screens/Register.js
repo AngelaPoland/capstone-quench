@@ -48,7 +48,10 @@ class Register extends Component {
         </TextInput>
         <TextInput
           onChangeText={ (text)=> this.setState({age: text}) }
-          style={styles.input} keyboardType='numeric' placeholder="Age">
+          style={styles.input}
+          keyboardType='numeric'
+          placeholder="Age"
+          >
         </TextInput>
         <TextInput
           onChangeText={ (text)=> this.setState({weight: text}) }

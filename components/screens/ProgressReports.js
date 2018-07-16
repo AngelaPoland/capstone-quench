@@ -27,7 +27,7 @@ class ProgressReports extends Component {
 
   componentDidMount = () => {
 
-    axios.get('http://192.168.1.5:3000/users/1/goal')
+    axios.get('http://172.24.22.249:3000/users/1/goal')
     .then( (response) => {
       console.log(response);
       this.setState({

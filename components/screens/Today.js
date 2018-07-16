@@ -20,7 +20,7 @@ class Today extends Component {
 
   componentDidMount = () => {
 
-    axios.get('http://192.168.1.5:3000/users/1/goal')
+    axios.get('http://172.24.22.249:3000/users/1/goal')
 
     .then( (response) => {
       console.log('RESPONSE IS');
@@ -62,11 +62,16 @@ class Today extends Component {
         <View style={styles.picker}>
           <Text style={styles.welcome}>Drank so far:</Text>
           <Text style = {styles.welcome}>{this.state.progress}</Text>
-          <Picker selectedValue = {this.state.progress} onValueChange = {this.updateProgress} style={{height: 100, width: 100}}>
+
+          <Picker
+            selectedValue = {this.state.progress}
+            onValueChange = {this.updateProgress}
+            style={{height: 100, width: 100}}>
             <Picker.Item label = "OZ" value = {this.state.goals.amount_drank_today} />
             <Picker.Item label = "CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
             <Picker.Item label = "GLASSES" value = {(this.state.goals.amount_drank_today / 16)} />
           </Picker>
+
         </View>
         console.log(this.state.progress);
       </View>
