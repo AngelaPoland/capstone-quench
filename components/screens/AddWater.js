@@ -47,52 +47,12 @@ class AddWater extends Component {
 
        this.addIntake(amount);
        this.clearForm();
+       this.onPressAlert();
   }
 
-  // onFormSubmit = () => {
-  //   console.log(this.state.amount);
-  //
-  //   if (this.state.measurement === 'OZ') {
-  //     this.addIntake(this.state.amount)
-  //     this.clearForm()
-  //   }
-  //   else if (this.state.measurement === 'CUPS') {
-  //     // this.setState.amount = (this.state.amount * 8)
-  //     // this.addIntake(this.state.amount)
-  //     // this.clearForm()
-  //     this.setState({
-  //       amount: this.state.amount * 8,
-  //       }, () => {
-  //         this.addIntake(this.state.amount)
-  //         this.clearForm()
-  //       });
-  //     }
-  //   else if (this.state.measurement === 'GLASSES') {
-  //     this.setState({
-  //       amount: this.state.amount * 16,
-  //       }, () => {
-  //         this.addIntake(this.state.amount)
-  //         this.clearForm()
-  //       });
-  //   }
-  // }
 
-  // this.setState({
-  //   data: newData
-  // }, () => {
-  //   //TODO: Do something with this.state here
-  // });
-
-  // onFieldChange = (event) => {
-  //   const fieldName = event.target.name;
-  //   const fieldValue = event.target.value;
-  //   const updateState = {};
-  //   updateState[fieldName] = fieldValue;
-  //   this.setState(updateState);
-  // }
-
-  _onPressButton() {
-    Alert.alert('Info will be updated, eventually!')
+  onPressAlert() {
+    Alert.alert('Water Entry Added!')
   }
 
   updateMeasurement = (measurement) => {

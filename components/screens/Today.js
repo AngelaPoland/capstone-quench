@@ -61,7 +61,7 @@ class Today extends Component {
         <Text></Text>
         <View style={styles.picker}>
           <Text style={styles.welcome}>Drank so far:</Text>
-          <Text style = {styles.welcome}>{this.state.progress}</Text>
+          <Text style = {styles.welcome}>{(this.state.progress).toFixed(2)}</Text>
 
           <Picker
             selectedValue = {this.state.progress}
