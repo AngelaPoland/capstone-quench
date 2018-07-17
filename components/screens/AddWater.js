@@ -45,14 +45,26 @@ class AddWater extends Component {
         amount = amount * 16
       }
 
+
+
+       if (this.state.amount === null) {
+         this.onPressNay();
+       } else {
+         this.onPressYay();
+       }
+
        this.addIntake(amount);
        this.clearForm();
-       this.onPressAlert();
+
   }
 
 
-  onPressAlert() {
+  onPressYay() {
     Alert.alert('Water Entry Added!')
+  }
+
+  onPressNay(){
+    Alert.alert('Please enter a value for amount.')
   }
 
   updateMeasurement = (measurement) => {
@@ -116,7 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#236F76',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 16,
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',

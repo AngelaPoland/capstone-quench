@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-  TextInput,
-  TouchableHighlight
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { StyleSheet, Text, View, Alert, TextInput, TouchableHighlight } from 'react-native';
+// import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 class EditAccount extends Component {
 
@@ -15,14 +10,30 @@ class EditAccount extends Component {
     super();
 
     this.state = {
-      email: "",
       name: "",
+      email: "",
       age: "",
       weight: "",
       goal: "",
     };
 
   }
+
+  editUser = () => {
+    axios.put('http://172.24.22.249:3000/users/1/', {
+      "name": "Angela P",
+      "email": "test@test.com",
+      "age": 30,
+      "weight": 160
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
 
   _onPressButton() {
     Alert.alert('Info will be updated, eventually!')
@@ -33,33 +44,39 @@ class EditAccount extends Component {
   }
 
   render () {
-
+    this.props.user
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
         <Text style={styles.heading}>
           Edit Your Account Information:
         </Text>
+        <Text>Name:</Text>
         <TextInput
           onChangeText={ (text)=> this.setState({name: text}) }
-          style={styles.input} autoCapitalize='words' placeholder="Name">
+          style={styles.input} autoCapitalize='words' defaultValue={this.props.user.name}>
         </TextInput>
+        <Text>Email:</Text>
         <TextInput
           onChangeText={ (text)=> this.setState({email: text}) }
-          style={styles.input} keyboardType='email-address' placeholder="Email">
+          style={styles.input} keyboardType='email-address' defaultValue={this.props.user.email}>
         </TextInput>
+        <Text>Age:</Text>
         <TextInput
           onChangeText={ (text)=> this.setState({age: text}) }
-          style={styles.input} keyboardType='numeric' placeholder="Age">
+          style={styles.input} keyboardType='numeric' defaultValue={this.props.user.age.toString()}>
         </TextInput>
+        <Text>Weight(lbs):</Text>
         <TextInput
           onChangeText={ (text)=> this.setState({weight: text}) }
-          style={styles.input} keyboardType='numeric' placeholder="Weight(lbs)">
+          style={styles.input} keyboardType='numeric' defaultValue={this.props.user.weight.toString()} >
         </TextInput>
+        <Text>Goal in Oz (8oz in a cup, or 16oz in a glass):</Text>
         <TextInput
           onChangeText={ (text)=> this.setState({goal: text}) }
           style={styles.input}
           placeholder="Goal in Oz (8oz in a cup, or 16 in a glass)"
+          defaultValue={this.props.user.goal.toString()}
           keyboardType='numeric'>
         </TextInput>
         <TouchableHighlight onPress={this._onPressButton} style={styles.button}>
@@ -132,5 +149,9 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
+
+EditAccount.propTypes = {
+  user: PropTypes.object.isRequired
+};
 
 export default EditAccount;

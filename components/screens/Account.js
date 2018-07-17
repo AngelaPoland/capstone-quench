@@ -8,15 +8,15 @@ class Account extends Component {
   constructor(){
     super();
     this.state = {
-      customer:[]
+      user: {}
     }
   }
 
   // getUser = () => {
   //   return fetch('http://localhost:3000/users/1/')
   //   .then((response) => response.json())
-  //   .then((customer) => {
-  //     this.setState({customer}}
+  //   .then((user) => {
+  //     this.setState({user}}
   //     })
   //     .catch((error) => {
 
@@ -30,7 +30,7 @@ class Account extends Component {
     .then( (response) => {
       console.log(response);
       this.setState({
-        customer: response.data
+        user: response.data
       });
     })
     .catch( (error) => {
@@ -42,23 +42,23 @@ class Account extends Component {
 
     render () {
 
-
+      const goToEditPage = () => Actions.editAccount({user: this.state.user});
 
       return (
         <View style={styles.container}>
           <View style={styles.userContainer}>
-            <Text style={styles.userInfo}>{this.state.customer.name}</Text>
-            <Text style={styles.userInfo}>{this.state.customer.email}</Text>
-            <Text style={styles.userInfo}>Age: {this.state.customer.age}</Text>
-            <Text style={styles.userInfo}>Weight: {this.state.customer.weight}</Text>
+            <Text style={styles.userInfo}>{this.state.user.name}</Text>
+            <Text style={styles.userInfo}>{this.state.user.email}</Text>
+            <Text style={styles.userInfo}>Age: {this.state.user.age}</Text>
+            <Text style={styles.userInfo}>Weight: {this.state.user.weight}</Text>
           </View>
 
 
-          <Text style={styles.goal}> Your Daily Goal: {this.state.customer.goal}oz</Text>
+          <Text style={styles.goal}> Your Daily Goal: {this.state.user.goal}oz</Text>
           <View style={styles.buttonLocation}>
           <Text
           style={styles.welcome}
-          onPress={() => Actions.editAccount()}
+          onPress={goToEditPage}
           >
           Press me to get to Account Edit Page
           </Text>

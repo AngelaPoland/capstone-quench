@@ -25,8 +25,9 @@ class ProgressReports extends Component {
     }
   }
 
-  componentDidMount = () => {
 
+  componentDidMount = () => {
+    console.log('COMPONENT DID MOUNT FOR WEEK/MONTH INFO...');
     axios.get('http://172.24.22.249:3000/users/1/goal')
     .then( (response) => {
       console.log(response);
@@ -56,8 +57,8 @@ class ProgressReports extends Component {
       let newKey = key.substr(5, 7);
       dates.push(newKey);
     })
-    console.log("DATES ARRAY SHOULD BE UPDATED");
-    console.log(dates);
+    console.log("GLASSES ARRAY SHOULD BE UPDATED");
+    console.log(glasses);
 
     let values = keys.map(function(v) { return weekHash[v]; });
 
@@ -119,7 +120,7 @@ class ProgressReports extends Component {
 
       <Text style={styles.welcome}>Progress Report Page</Text>
       <Text style={styles.text}>Week Report</Text>
-      <Text style={styles.smallerText}>Glasses drunk per day</Text>
+      <Text style={styles.smallerText}>Glasses drank in last 7 days</Text>
       <LineChart
       data={this.parseWeekData()}
       width={screenWidth}
@@ -127,6 +128,7 @@ class ProgressReports extends Component {
       chartConfig={chartConfig}
       />
       <Text style={styles.text}>Month Report</Text>
+      <Text style={styles.smallerText}>Glasses drank in last 31 days</Text>
       <LineChart
       data={this.parseMonthData()}
       width={screenWidth}
