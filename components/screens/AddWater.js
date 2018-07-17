@@ -45,8 +45,6 @@ class AddWater extends Component {
         amount = amount * 16
       }
 
-
-
        if (this.state.amount === null) {
          this.onPressNay();
        } else {
@@ -55,7 +53,6 @@ class AddWater extends Component {
 
        this.addIntake(amount);
        this.clearForm();
-
   }
 
 

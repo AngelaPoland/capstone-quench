@@ -21,16 +21,14 @@ class EditAccount extends Component {
 
 
 
+  onFormSubmit = () => {
+    let userInfo = this.state
+    this.editUser(userInfo)
+  }
 
 
-
-  editUser = () => {
-    axios.put('http://172.24.22.249:3000/users/1/', {
-      "name": "Angela P",
-      "email": "test@test.com",
-      "age": 30,
-      "weight": 160
-      })
+  editUser = (user) => {
+    axios.put(`http://localhost:3000/users/1?name=${user["name"]}&email=${user["email"]}&age=${user["age"]}&weight=${user["weight"]}&goal=${user["goal"]}`)
       .then(response => {
         console.log(response);
       })
@@ -58,27 +56,31 @@ class EditAccount extends Component {
           Edit Your Account Information:
         </Text>
 
-        <Text>Name:</Text>
+
         <TextInput
           onChangeText={ (text)=> this.setState({name: text}) }
           style={styles.input} autoCapitalize='words' defaultValue={this.props.user.name}>
         </TextInput>
-        <Text>Email:</Text>
+        <Text>Name</Text>
+
         <TextInput
           onChangeText={ (text)=> this.setState({email: text}) }
           style={styles.input} keyboardType='email-address' defaultValue={this.props.user.email}>
         </TextInput>
-        <Text>Age:</Text>
+        <Text>Email</Text>
+
         <TextInput
           onChangeText={ (text)=> this.setState({age: text}) }
           style={styles.input} keyboardType='numeric' defaultValue={this.props.user.age.toString()}>
         </TextInput>
-        <Text>Weight(lbs):</Text>
+        <Text>Age</Text>
+
         <TextInput
           onChangeText={ (text)=> this.setState({weight: text}) }
           style={styles.input} keyboardType='numeric' defaultValue={this.props.user.weight.toString()} >
         </TextInput>
-        <Text>Goal in Oz (8oz in a cup, or 16oz in a glass):</Text>
+        <Text>Weight(lbs)</Text>
+
         <TextInput
           onChangeText={ (text)=> this.setState({goal: text}) }
           style={styles.input}
@@ -86,10 +88,11 @@ class EditAccount extends Component {
           defaultValue={this.props.user.goal.toString()}
           keyboardType='numeric'>
         </TextInput>
-
-        <TouchableHighlight onPress={this._onPressButton} style={styles.button}>
+        <Text>Goal in Oz (8oz in a cup, or 16oz in a glass)</Text>
+        
+        <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
           <Text style={styles.buttonText}>
-            Register
+            Update
           </Text>
         </TouchableHighlight>
 
