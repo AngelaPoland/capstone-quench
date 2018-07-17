@@ -6,18 +6,23 @@ import axios from 'axios';
 
 class EditAccount extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super()
 
     this.state = {
-      name: "",
-      email: "",
-      age: "",
-      weight: "",
-      goal: "",
+      name: props.user.name,
+      email: props.user.email,
+      age: props.user.age,
+      weight: props.user.weight,
+      goal: props.user.goal,
     };
 
   }
+
+
+
+
+
 
   editUser = () => {
     axios.put('http://172.24.22.249:3000/users/1/', {
@@ -44,13 +49,15 @@ class EditAccount extends Component {
   }
 
   render () {
-    this.props.user
+
+    console.log(this.state);
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
         <Text style={styles.heading}>
           Edit Your Account Information:
         </Text>
+
         <Text>Name:</Text>
         <TextInput
           onChangeText={ (text)=> this.setState({name: text}) }
@@ -79,6 +86,7 @@ class EditAccount extends Component {
           defaultValue={this.props.user.goal.toString()}
           keyboardType='numeric'>
         </TextInput>
+
         <TouchableHighlight onPress={this._onPressButton} style={styles.button}>
           <Text style={styles.buttonText}>
             Register
