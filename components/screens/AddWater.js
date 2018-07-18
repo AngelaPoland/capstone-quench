@@ -18,6 +18,7 @@ class AddWater extends Component {
     axios.post(`http://quenched-api.herokuapp.com/users/1/intakes?amount=${amount}`)
     .then((response) => {
       console.log(response.data)
+      
     })
     .catch((error) => {
       console.log(error)

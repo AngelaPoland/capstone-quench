@@ -12,18 +12,16 @@ class Account extends Component {
     }
   }
 
-  // getUser = () => {
-  //   return fetch('http://localhost:3000/users/1/')
-  //   .then((response) => response.json())
-  //   .then((user) => {
-  //     this.setState({user}}
-  //     })
-  //     .catch((error) => {
 
-  //       console.error(error);
-  //     });
-  //   }
-  componentDidMount = () => {
+  componentDidMount() {
+  this.getUserInfo();
+  // this.interval = setInterval(this.getGoalInfo, 30000);
+  setInterval(this.getUserInfo.bind(this), 10000)
+  // setInterval(function(){ this.getGoalInfo }, 10000);
+  }
+
+
+  getUserInfo = () => {
     console.log('Component did mount WAS CALLED');
 
     axios.get('http://quenched-api.herokuapp.com/users/1')

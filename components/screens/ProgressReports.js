@@ -25,8 +25,13 @@ class ProgressReports extends Component {
     }
   }
 
+  componentDidMount() {
+  this.getReportData();
+  setInterval(this.getReportData.bind(this), 10000)
+  }
 
-  componentDidMount = () => {
+
+  getReportData = () => {
     console.log('COMPONENT DID MOUNT FOR WEEK/MONTH INFO...');
     axios.get('http://quenched-api.herokuapp.com/users/1/goal')
     .then( (response) => {

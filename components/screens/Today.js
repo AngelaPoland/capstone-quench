@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Picker } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import ProgressCircle from 'react-native-progress-circle'
 
 class Today extends Component {
@@ -15,6 +17,22 @@ class Today extends Component {
     }
   }
 
+
+  // static onEnterToday = () => {
+  //   Actions.refresh({
+  //     this.setState({state: this.state})
+  //   });
+  // }
+  //
+  // UNSAFE_componentWillReceiveProps (nextProps) {
+  //   console.log(this.props.enterTime);
+  //   console.log(nextProps.enterTime);
+  //   if (this.props.enterTime !== nextProps.enterTime) {
+  //     this.setState({something: nextProps.enterTime});
+  //   }
+  // }
+
+
   updateProgress = (progress) => {
     this.setState({ progress: progress })
   }
@@ -27,23 +45,27 @@ class Today extends Component {
     }
   }
 
-  componentDidMount = () => {
+  // seeState = () => {
+  //   console.log(this.state);
+  // }
+
+  componentDidMount() {
+  this.getGoalInfo();
+  // this.interval = setInterval(this.getGoalInfo, 30000);
+  setInterval(this.getGoalInfo.bind(this), 10000)
+  // setInterval(function(){ this.getGoalInfo }, 10000);
+  }
+
+  getGoalInfo = () => {
 
     axios.get('http://quenched-api.herokuapp.com/users/1/goal')
-
     .then( (response) => {
       console.log('RESPONSE IS');
       console.log(response);
       this.setState({
-        goals: response.data
-      });
-      this.setState({
-        value: response.data.percent_drank_towards_goal
-      });
-      this.setState({
-        progress: response.data.amount_drank_today
-      });
-      this.setState({
+        goals: response.data,
+        value: response.data.percent_drank_towards_goal,
+        progress: response.data.amount_drank_today,
         left: response.data.left_to_drink
       });
     })
@@ -55,7 +77,10 @@ class Today extends Component {
 
 
 
+
+
   render () {
+
 
     return (
       <View style={styles.container}>
@@ -73,6 +98,7 @@ class Today extends Component {
         <Text></Text>
         <View style={styles.picker}>
           <Text style={styles.welcome}>Drank so far:</Text>
+
           <Text style = {styles.welcome}>{(this.state.progress).toFixed(2)}</Text>
 
           <Picker
@@ -100,12 +126,6 @@ class Today extends Component {
           </Picker>
 
         </View>
-
-
-
-
-
-
       </View>
     );
   }
@@ -136,6 +156,10 @@ const styles = StyleSheet.create({
   }
 
 });
+
+Today.propTypes = {
+  enterTime: PropTypes.func.isRequired
+};
 
 
 export default Today;

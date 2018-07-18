@@ -22,12 +22,12 @@ class EditAccount extends Component {
 
 
   onFormSubmit = () => {
-    this.editUser()
+    this.editUser(this.state)
   }
 
 
-  editUser = () => {
-    axios.put(`http://quenched-api.herokuapp.com/users/1`, this.state)
+  editUser = (user) => {
+    axios.put(`http://quenched-api.herokuapp.com/users/1`, user )
       .then(response => {
         console.log(response);
         this.onPressYay();

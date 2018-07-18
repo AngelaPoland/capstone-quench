@@ -29,10 +29,6 @@ class TabIcon extends React.Component {
 
 export default class App extends React.Component {
 
-  // _onPressButton() {
-  //   Alert.alert('You tapped the button!')
-  // }
-
 
   render() {
     return (
@@ -48,6 +44,7 @@ export default class App extends React.Component {
               <Scene key="account"
                 component={Account}
                 title="Account Page"
+
                 initial
                 />
               <Scene
@@ -62,11 +59,11 @@ export default class App extends React.Component {
                 />
             </Scene>
 
-            <Scene key="todayTab" title="Today" iconName="tint" icon={TabIcon}>
+            <Scene key="todayTab" title="Today" iconName="tint" icon={TabIcon} >
               <Scene key="today"
                 component={Today}
                 title="Today Page"
-                initial
+                onEnter={Today.getGoalInfo}
                 />
             </Scene>
 
@@ -83,6 +80,7 @@ export default class App extends React.Component {
               <Scene key="report"
                 component={ProgressReports}
                 title="Progress Report Page"
+                onClick={ProgressReports.getReportData}
                 initial
                 />
             </Scene>
