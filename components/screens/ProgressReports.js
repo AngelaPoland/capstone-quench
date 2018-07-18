@@ -28,7 +28,7 @@ class ProgressReports extends Component {
 
   componentDidMount = () => {
     console.log('COMPONENT DID MOUNT FOR WEEK/MONTH INFO...');
-    axios.get('http://172.24.22.249:3000/users/1/goal')
+    axios.get('http://quenched-api.herokuapp.com/users/1/goal')
     .then( (response) => {
       console.log(response);
       this.setState({

@@ -22,24 +22,28 @@ class EditAccount extends Component {
 
 
   onFormSubmit = () => {
-    let userInfo = this.state
-    this.editUser(userInfo)
+    this.editUser()
   }
 
 
-  editUser = (user) => {
-    axios.put(`http://localhost:3000/users/1?name=${user["name"]}&email=${user["email"]}&age=${user["age"]}&weight=${user["weight"]}&goal=${user["goal"]}`)
+  editUser = () => {
+    axios.put(`http://quenched-api.herokuapp.com/users/1`, this.state)
       .then(response => {
         console.log(response);
+        this.onPressYay();
       })
       .catch(error => {
         console.log(error);
+        this.onPressNay();
       });
   }
 
+  onPressYay() {
+    Alert.alert('Account Updated!')
+  }
 
-  _onPressButton() {
-    Alert.alert('Info will be updated, eventually!')
+  onPressNay(){
+    Alert.alert('Account was not updated.')
   }
 
   onRegisterPressed() {
@@ -89,7 +93,7 @@ class EditAccount extends Component {
           keyboardType='numeric'>
         </TextInput>
         <Text>Goal in Oz (8oz in a cup, or 16oz in a glass)</Text>
-        
+
         <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
           <Text style={styles.buttonText}>
             Update

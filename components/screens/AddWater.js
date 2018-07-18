@@ -15,7 +15,7 @@ class AddWater extends Component {
   }
 
   addIntake = (amount) => {
-    axios.post(`http://172.24.22.249:3000/users/1/intakes?amount=${amount}`)
+    axios.post(`http://quenched-api.herokuapp.com/users/1/intakes?amount=${amount}`)
     .then((response) => {
       console.log(response.data)
     })
