@@ -15,6 +15,13 @@ async function getiOSNotificationPermission() {
 
 class CreateNotifications extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      switch: "OFF"
+    }
+  }
+
   _turnOnButtonPress = () => {
 
     const localnotification = {
@@ -39,11 +46,18 @@ class CreateNotifications extends Component {
       schedulingOptions
     )}
 
+    this.setState({
+      switch: "ON",
+    });
+
   }; //end of handleButtonPress function
 
 
   _turnOffButtonPress = () => {
-    Notifications.cancelAllScheduledNotificationsAsync()
+    Notifications.cancelAllScheduledNotificationsAsync();
+    this.setState({
+      switch: "OFF",
+    });
   }
 
 
@@ -74,7 +88,8 @@ class CreateNotifications extends Component {
         Create Notifications Page
       </Text>
 
-      <Text style={styles.text} > Send a notification in 5 seconds then every hour.</Text>
+      <Text style={styles.text} > Send a reminder in 5 seconds then every hour.</Text>
+      <Text style={styles.text} > Notifications are currently turned: {this.state.switch}</Text>
 
       <TouchableHighlight
         onPress={this._turnOnButtonPress}

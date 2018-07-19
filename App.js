@@ -55,7 +55,7 @@ export default class App extends React.Component {
               <Scene
                 key="createNotifications"
                 component={CreateNotifications}
-                title="Create Notifications"
+                title="Notifications"
                 />
             </Scene>
 
