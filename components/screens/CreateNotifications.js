@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Alert, Platform } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Alert, Platform } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import { Notifications, Permissions } from 'expo';
 
@@ -15,7 +15,8 @@ async function getiOSNotificationPermission() {
 
 class CreateNotifications extends Component {
 
-  _handleButtonPress = () => {
+  _turnOnButtonPress = () => {
+
     const localnotification = {
       title: 'This is your drink water reminder!',
       body: 'Have you gotten to your goal yet? No matter where you are at, hydration will make you feel better.',
@@ -26,16 +27,26 @@ class CreateNotifications extends Component {
         sound: true,
       },
     };
+
     let sendAfterFiveSeconds = Date.now();
     sendAfterFiveSeconds += 5000;
+    let schedulingOptions = { time: sendAfterFiveSeconds, repeat:'minute' };
+    let hour = new Date().getHours();
 
-    const schedulingOptions = { time: sendAfterFiveSeconds };
+    if (hour >= 8 && hour < 20) {
     Notifications.scheduleLocalNotificationAsync(
       localnotification,
       schedulingOptions
-    );
-  };
-  
+    )}
+
+  }; //end of handleButtonPress function
+
+
+  _turnOffButtonPress = () => {
+    Notifications.cancelAllScheduledNotificationsAsync()
+  }
+
+
   listenForNotifications = () => {
     Notifications.addListener(notification => {
       if (notification.origin === 'received' && Platform.OS === 'ios') {
@@ -55,16 +66,32 @@ class CreateNotifications extends Component {
 
   return (
     <View style={styles.container}>
+
       <Text
         style={styles.welcome}
         // onPress={() => Actions.account()}
       >
         Create Notifications Page
       </Text>
-      <Button
-          title="Send a notification in 5 seconds!"
-          onPress={this._handleButtonPress}
-        />
+
+      <Text style={styles.text} > Send a notification in 5 seconds then every hour.</Text>
+
+      <TouchableHighlight
+        onPress={this._turnOnButtonPress}
+        style={styles.button}>
+        <Text style={styles.text}>
+          START NOTIFICATIONS
+        </Text>
+      </TouchableHighlight>
+
+      <TouchableHighlight
+        onPress={this._turnOffButtonPress}
+        style={styles.button}>
+        <Text style={styles.text}>
+          TURN OFF NOTIFICATIONS
+        </Text>
+      </TouchableHighlight>
+
     </View>
   );
 }
@@ -83,6 +110,17 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#ffffff',
   },
+  button: {
+    color: 'white',
+    borderColor: 'white',
+    borderRadius: 10,
+    borderWidth: 5,
+    padding: 5,
+    marginTop: 50,
+  },
+  text: {
+    color: 'white',
+  }
 });
 
 export default CreateNotifications;

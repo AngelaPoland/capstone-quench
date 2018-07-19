@@ -17,22 +17,6 @@ class Today extends Component {
     }
   }
 
-
-  // static onEnterToday = () => {
-  //   Actions.refresh({
-  //     this.setState({state: this.state})
-  //   });
-  // }
-  //
-  // UNSAFE_componentWillReceiveProps (nextProps) {
-  //   console.log(this.props.enterTime);
-  //   console.log(nextProps.enterTime);
-  //   if (this.props.enterTime !== nextProps.enterTime) {
-  //     this.setState({something: nextProps.enterTime});
-  //   }
-  // }
-
-
   updateProgress = (progress) => {
     this.setState({ progress: progress })
   }
