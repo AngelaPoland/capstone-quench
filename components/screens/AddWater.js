@@ -18,7 +18,7 @@ class AddWater extends Component {
     axios.post(`http://quenched-api.herokuapp.com/users/1/intakes?amount=${amount}`)
     .then((response) => {
       console.log(response.data)
-      
+
     })
     .catch((error) => {
       console.log(error)
@@ -44,6 +44,8 @@ class AddWater extends Component {
         amount = amount * 8
       } else if (this.state.measurement == 'GLASSES') {
         amount = amount * 16
+      } else if (this.state.measurement == 'LITERS') {
+        amount = amount * 33.8
       }
 
        if (this.state.amount === null) {
@@ -102,6 +104,7 @@ class AddWater extends Component {
       <Picker.Item label = "OZ" value = "OZ" />
       <Picker.Item label = "CUP(S)" value = "CUPS" />
       <Picker.Item label = "GLASSES" value = "GLASSES" />
+      <Picker.Item label = "LITERS" value = "LITERS" />
       </Picker>
 
       </View>

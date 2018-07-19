@@ -92,6 +92,7 @@ class Today extends Component {
             <Picker.Item label = "OZ" value = {this.state.goals.amount_drank_today} />
             <Picker.Item label = "CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
             <Picker.Item label = "GLASSES" value = {(this.state.goals.amount_drank_today / 16)} />
+            <Picker.Item label = "LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
           </Picker>
 
         </View>
@@ -107,6 +108,7 @@ class Today extends Component {
             <Picker.Item label = "OZ" value = {this.state.goals.left_to_drink} />
             <Picker.Item label = "CUPS" value = {(this.state.goals.left_to_drink / 8)} />
             <Picker.Item label = "GLASSES" value = {(this.state.goals.left_to_drink / 16)} />
+            <Picker.Item label = "LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
           </Picker>
 
         </View>

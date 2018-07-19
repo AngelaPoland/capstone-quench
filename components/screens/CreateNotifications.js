@@ -10,6 +10,7 @@ async function getiOSNotificationPermission() {
   );
   if (status !== 'granted') {
     await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    alert('Hi Friend! You might want to allow notifications for my app, they are good and will remind you to drink water.');
   }
 }
 
