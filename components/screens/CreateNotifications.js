@@ -41,7 +41,7 @@ class CreateNotifications extends Component {
     let schedulingOptions = { time: sendAfterFiveSeconds, repeat:'minute' };
     let hour = new Date().getHours();
 
-    if (hour >= 8 && hour < 20) {
+    if (hour >= 8 && hour < 21) {   //only does notifications between 8am -9pm
     Notifications.scheduleLocalNotificationAsync(
       localnotification,
       schedulingOptions

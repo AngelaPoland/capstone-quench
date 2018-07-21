@@ -12,6 +12,8 @@ import AddWater from './components/screens/AddWater.js'
 import ProgressReports from './components/screens/ProgressReports.js'
 import SearchMap from './components/screens/SearchMap.js'
 
+import ProgressReports2 from './components/screens/ProgressReports2.js'
+
 
 class TabIcon extends React.Component {
   static propTypes = {
@@ -20,7 +22,7 @@ class TabIcon extends React.Component {
   render() {
     return (
       <View >
-        <Icon name={this.props.iconName}/>
+        <Icon name={this.props.iconName} color='blue'/>
       </View>
     );
   }
@@ -76,11 +78,27 @@ export default class App extends React.Component {
                 />
             </Scene>
 
-            <Scene key="ProgressReportTab" title="Track" iconName="bar-chart" icon={TabIcon}>
-              <Scene key="report"
-                component={ProgressReports}
-                title="Progress Report Page"
-                />
+            <Scene
+              key="Track"
+              tabs={true}
+              tabBarStyle={{ backgroundColor: '#FFFFFF'}}
+              iconName="bar-chart"
+              icon={TabIcon}
+              activeBackgroundColor="#25abf9"
+              
+              >
+              <Scene key="ProgressReportTab1" title="Week" iconName="angle-double-left" icon={TabIcon} showLabel={false}>
+                <Scene key="report"
+                  component={ProgressReports}
+
+                  />
+              </Scene>
+              <Scene key="ProgressReportTab2" title="Month" iconName="angle-double-right" icon={TabIcon} showLabel={false}>
+                <Scene key="report2"
+                  component={ProgressReports2}
+                  title="Month"
+                  />
+              </Scene>
             </Scene>
 
             <Scene key="findTab" title="Find" iconName="map" icon={TabIcon}>

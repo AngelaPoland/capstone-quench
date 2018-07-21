@@ -14,13 +14,12 @@ const chartConfig = {
   }
 };
 
-
-class ProgressReports extends Component {
+class ProgressReports2 extends Component {
 
   constructor(){
     super();
     this.state = {
-      week:[]
+      month:[]
     }
   }
 
@@ -29,14 +28,13 @@ class ProgressReports extends Component {
     setInterval(this.getReportData.bind(this), 10000)
   }
 
-
   getReportData = () => {
     console.log('COMPONENT DID MOUNT FOR WEEK/MONTH INFO...');
     axios.get('http://quenched-api.herokuapp.com/users/1/goal')
     .then( (response) => {
       console.log(response);
       this.setState({
-        week: response.data.total_for_week,
+        month: response.data.total_drank_month,
       });
     })
     .catch( (error) => {
@@ -45,11 +43,11 @@ class ProgressReports extends Component {
     });
   }
 
-  parseWeekData = () => {
+  parseMonthData = () => {
 
-    let weekHash = this.state.week
+    let monthHash = this.state.month
 
-    let keys = Object.keys(weekHash);
+    let keys = Object.keys(monthHash);
 
     let dates = []
     let glasses = []
@@ -58,37 +56,36 @@ class ProgressReports extends Component {
       let newKey = key.substr(5, 7);
       dates.push(newKey);
     })
-    console.log("GLASSES ARRAY SHOULD BE UPDATED");
-    console.log(glasses);
+    console.log("DATES ARRAY SHOULD BE UPDATED");
+    console.log(dates);
 
-    let values = keys.map(function(v) { return weekHash[v]; });
+    let values = keys.map(function(v) { return monthHash[v]; });
 
     values.forEach(function(value){
-      glasses.push(Math.round((value / 16)*2)/2) //this changes the chart to show amount in glasses
+      glasses.push(Math.round((value / 16)*2)/2) //this rounds number to closest 0.5
     })
 
-    const weekData = {
-      labels: dates,
+    const monthData = {
+      labels: [],
       datasets: [{
         data: glasses
       }]
     }
-    console.log("Week Data:");
-    console.log(weekData)
-    return weekData;
+    console.log("Month Data:");
+    console.log(monthData)
+    return monthData;
   }
 
 
-  render () {
-
+  render() {
     return (
+
       <ScrollView contentContainerStyle={styles.container}>
 
-      <Text style={styles.welcome}>Progress Report Page</Text>
-      <Text style={styles.text}>Week Report</Text>
-      <Text style={styles.smallerText}>Glasses drank in last 7 days</Text>
+      <Text style={styles.text}>Month Report</Text>
+      <Text style={styles.smallerText}>Glasses drank in last 31 days</Text>
       <LineChart
-      data={this.parseWeekData()}
+      data={this.parseMonthData()}
       width={screenWidth}
       height={220}
       chartConfig={chartConfig}
@@ -101,6 +98,7 @@ class ProgressReports extends Component {
       <Text> </Text>
 
       </ScrollView>
+
     );
   }
 }
@@ -132,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProgressReports;
+export default ProgressReports2;
