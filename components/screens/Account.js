@@ -44,6 +44,7 @@ class Account extends Component {
 
       return (
         <View style={styles.container}>
+        <Text style={styles.userInfo}>User Information</Text>
           <View style={styles.userContainer}>
             <Text style={styles.userInfo}>{this.state.user.name}</Text>
             <Text style={styles.userInfo}>{this.state.user.email}</Text>
@@ -52,19 +53,20 @@ class Account extends Component {
           </View>
 
 
-          <Text style={styles.goal}> Your Daily Goal: {this.state.user.goal}oz</Text>
+          <Text style={styles.goal}> Your Daily Goal:</Text>
+          <Text style={styles.goal}>{this.state.user.goal}oz</Text>
           <View style={styles.buttonLocation}>
           <Text
           style={styles.welcome}
           onPress={goToEditPage}
           >
-          Press me to get to Account Edit Page
+          Press me to get to edit your User Info
           </Text>
           <Text
           style={styles.welcome}
           onPress={() => Actions.createNotifications()}
           >
-          Press me to Create Notifications
+          Press Me for Water Reminders
           </Text>
           </View>
         </View>
@@ -99,6 +101,7 @@ class Account extends Component {
       fontSize: 40,
       color: '#1255EF',
       textAlign: 'center',
+      paddingTop: 30,
     },
     userContainer: {
       borderColor: 'green',

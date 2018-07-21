@@ -80,8 +80,6 @@ export default class App extends React.Component {
               <Scene key="report"
                 component={ProgressReports}
                 title="Progress Report Page"
-                onEnter={ProgressReports.getReportData}
-                initial
                 />
             </Scene>
 
@@ -89,7 +87,7 @@ export default class App extends React.Component {
               <Scene key="find"
                 component={SearchMap}
                 title="Find Water"
-                
+
                 />
             </Scene>
 

@@ -26,8 +26,8 @@ class ProgressReports extends Component {
   }
 
   componentDidMount() {
-  this.getReportData();
-  setInterval(this.getReportData.bind(this), 10000)
+    this.getReportData();
+    setInterval(this.getReportData.bind(this), 10000)
   }
 
 
@@ -131,6 +131,7 @@ class ProgressReports extends Component {
       width={screenWidth}
       height={220}
       chartConfig={chartConfig}
+      bezier
       />
       <Text style={styles.text}>Month Report</Text>
       <Text style={styles.smallerText}>Glasses drank in last 31 days</Text>
@@ -139,6 +140,7 @@ class ProgressReports extends Component {
       width={screenWidth}
       height={220}
       chartConfig={chartConfig}
+      bezier
       />
 
       </ScrollView>

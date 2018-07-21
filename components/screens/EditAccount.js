@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Alert, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Alert, TextInput, TouchableHighlight, TouchableWithoutFeedback, Keyboard } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 class EditAccount extends Component {
 
@@ -20,7 +21,6 @@ class EditAccount extends Component {
   }
 
 
-
   onFormSubmit = () => {
     this.editUser(this.state)
   }
@@ -28,14 +28,16 @@ class EditAccount extends Component {
 
   editUser = (user) => {
     axios.put(`http://quenched-api.herokuapp.com/users/1`, user )
-      .then(response => {
-        console.log(response);
-        this.onPressYay();
-      })
-      .catch(error => {
-        console.log(error);
-        this.onPressNay();
-      });
+    .then(response => {
+      console.log(response);
+      console.log('edit GOAL:');
+      console.log(response.data.goal);
+      this.onPressYay();
+    })
+    .catch(error => {
+      console.log(error);
+      this.onPressNay();
+    });
   }
 
   onPressYay() {
@@ -46,68 +48,72 @@ class EditAccount extends Component {
     Alert.alert('Account was not updated.')
   }
 
-  onRegisterPressed() {
-    console.log(this);
-  }
+  // onRegisterPressed() {
+  //   console.log(this);
+  // }
 
   render () {
 
     console.log(this.state);
-  return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.heading}>
-          Edit Your Account Information:
-        </Text>
+    return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
+
+        <KeyboardAwareScrollView
+          style={{ backgroundColor: 'white' }}
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          scrollEnabled={true}
+          >
+
+          <View style={styles.formContainer}>
+            <Text style={styles.heading}>
+              Edit Your Account Information:
+            </Text>
 
 
-        <TextInput
-          onChangeText={ (text)=> this.setState({name: text}) }
-          style={styles.input} autoCapitalize='words' defaultValue={this.props.user.name}>
-        </TextInput>
-        <Text>Name</Text>
+            <TextInput
+              onChangeText={ (text)=> this.setState({name: text}) }
+              style={styles.input} autoCapitalize='words' defaultValue={this.props.user.name}>
+            </TextInput>
+            <Text>Name</Text>
 
-        <TextInput
-          onChangeText={ (text)=> this.setState({email: text}) }
-          style={styles.input} keyboardType='email-address' defaultValue={this.props.user.email}>
-        </TextInput>
-        <Text>Email</Text>
+            <TextInput
+              onChangeText={ (text)=> this.setState({email: text}) }
+              style={styles.input} keyboardType='email-address' defaultValue={this.props.user.email}>
+            </TextInput>
+            <Text>Email</Text>
 
-        <TextInput
-          onChangeText={ (text)=> this.setState({age: text}) }
-          style={styles.input} keyboardType='numeric' defaultValue={this.props.user.age.toString()}>
-        </TextInput>
-        <Text>Age</Text>
+            <TextInput
+              onChangeText={ (text)=> this.setState({age: text}) }
+              style={styles.input} keyboardType='numeric' defaultValue={this.props.user.age.toString()}>
+            </TextInput>
+            <Text>Age</Text>
 
-        <TextInput
-          onChangeText={ (text)=> this.setState({weight: text}) }
-          style={styles.input} keyboardType='numeric' defaultValue={this.props.user.weight.toString()} >
-        </TextInput>
-        <Text>Weight(lbs)</Text>
+            <TextInput
+              onChangeText={ (text)=> this.setState({weight: text}) }
+              style={styles.input} keyboardType='numeric' defaultValue={this.props.user.weight.toString()} >
+            </TextInput>
+            <Text>Weight(lbs)</Text>
 
-        <TextInput
-          onChangeText={ (text)=> this.setState({goal: text}) }
-          style={styles.input}
-          placeholder="Goal in Oz (8oz in a cup, or 16 in a glass)"
-          defaultValue={this.props.user.goal.toString()}
-          keyboardType='numeric'>
-        </TextInput>
-        <Text>Goal in Oz (8oz in a cup, or 16oz in a glass)</Text>
+            <TextInput
+              onChangeText={ (text)=> this.setState({goal: text}) }
+              style={styles.input}
+              placeholder="Goal in Oz (8oz in a cup, or 16 in a glass)"
+              defaultValue={this.props.user.goal.toString()}
+              keyboardType='numeric'>
+            </TextInput>
+            <Text>Goal in Oz (8oz in a cup, or 16oz in a glass)</Text>
 
-        <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
-          <Text style={styles.buttonText}>
-            Update
-          </Text>
-        </TouchableHighlight>
+            <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Update
+              </Text>
+            </TouchableHighlight>
 
-
-      </View>
-
-
-
-    </View>
-  );
-}
+          </View>
+        </KeyboardAwareScrollView>
+      </TouchableWithoutFeedback>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -37,7 +37,7 @@ class CreateNotifications extends Component {
     };
 
     let sendAfterFiveSeconds = Date.now();
-    sendAfterFiveSeconds += 5000;
+    sendAfterFiveSeconds += 3000;
     let schedulingOptions = { time: sendAfterFiveSeconds, repeat:'minute' };
     let hour = new Date().getHours();
 
@@ -70,7 +70,7 @@ class CreateNotifications extends Component {
     });
   };
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     getiOSNotificationPermission();
     this.listenForNotifications();
   }
