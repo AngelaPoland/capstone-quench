@@ -94,11 +94,7 @@ class ProgressReports extends Component {
       chartConfig={chartConfig}
       bezier
       />
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
+    
 
       </ScrollView>
     );

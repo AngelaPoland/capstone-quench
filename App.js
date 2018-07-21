@@ -64,7 +64,7 @@ export default class App extends React.Component {
             <Scene key="todayTab" title="Today" iconName="tint" icon={TabIcon} >
               <Scene key="today"
                 component={Today}
-                title="Today Page"
+                title="Today"
                 onEnter={Today.getGoalInfo}
                 />
             </Scene>
@@ -73,7 +73,7 @@ export default class App extends React.Component {
               icon={TabIcon}>
               <Scene key="account"
                 component={AddWater}
-                title="Add Water Intake Page"
+                title="Add"
                 initial
                 />
             </Scene>
@@ -85,13 +85,14 @@ export default class App extends React.Component {
               iconName="bar-chart"
               icon={TabIcon}
               activeBackgroundColor="#25abf9"
-              
+              swipeEnabled={true}
+
               >
               <Scene key="ProgressReportTab1" title="Week" iconName="angle-double-left" icon={TabIcon} showLabel={false}>
                 <Scene key="report"
                   component={ProgressReports}
 
-                  />
+                />
               </Scene>
               <Scene key="ProgressReportTab2" title="Month" iconName="angle-double-right" icon={TabIcon} showLabel={false}>
                 <Scene key="report2"

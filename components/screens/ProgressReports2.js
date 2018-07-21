@@ -53,7 +53,7 @@ class ProgressReports2 extends Component {
     let glasses = []
 
     keys.forEach(function(key) {
-      let newKey = key.substr(5, 7);
+      let newKey = key.substr(8, 11);
       dates.push(newKey);
     })
     console.log("DATES ARRAY SHOULD BE UPDATED");
@@ -66,7 +66,7 @@ class ProgressReports2 extends Component {
     })
 
     const monthData = {
-      labels: [],
+      labels: dates,
       datasets: [{
         data: glasses
       }]
@@ -91,12 +91,6 @@ class ProgressReports2 extends Component {
       chartConfig={chartConfig}
       bezier
       />
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
-
       </ScrollView>
 
     );
