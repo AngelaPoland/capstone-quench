@@ -84,9 +84,9 @@ class Today extends Component {
           <Text></Text>
 
           <View style={styles.picker}>
-            <Text style={styles.welcome}>Drank so far: {(this.state.progress).toFixed(2)}</Text>
+            <Text style={styles.welcome}>Amount drunk so far: {(this.state.progress).toFixed(2)}</Text>
 
-            <View style={{ marginLeft: 80, marginRight: 80 }}>
+            <View style={{ marginLeft: 50, marginRight: 50 }}>
               <Picker
                 selectedValue={this.state.progress}
                 onValueChange = {this.updateProgress}
@@ -101,21 +101,21 @@ class Today extends Component {
             </View>
           </View>
 
+          <View style={styles.pickerContainer}>
+            <Text style={styles.welcome}>Amount left to drink: {(this.state.left).toFixed(2)}</Text>
 
-          <View style={styles.picker}>
-            <Text style={styles.welcome}>Amount left to drink:</Text>
-            <Text style = {styles.welcome}>{(this.state.left).toFixed(2)}</Text>
-            <View style={{ marginLeft: 80, marginRight: 80 }}>
+            <View style={{ marginLeft: 80, marginRight: 80, borderWidth:2, borderColor : 'red' }}>
               <Picker
                 selectedValue = {this.state.left}
                 onValueChange = {this.updateLeft}
                 style={{height: 100, width: 100}}
-                itemStyle={{fontSize: 12, fontWeight: 'bold', color: 'white'}}
+                itemStyle={{fontSize: 12, fontWeight: 'bold', color: 'white',  borderWidth:2, borderColor : 'red'}}
                 >
-                <Picker.Item label = "OZ" value = {this.state.goals.left_to_drink}  />
-                <Picker.Item label = "CUPS" value = {(this.state.goals.left_to_drink / 8)} />
-                <Picker.Item label = "GLASSES" value = {(this.state.goals.left_to_drink / 16)} />
-                <Picker.Item label = "LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
+                <Picker.Item label="OZ" value={this.state.goals.left_to_drink} style={{borderBottomColor: 'white',
+        borderBottomWidth: 1,}}  />
+                <Picker.Item label="CUPS" value={(this.state.goals.left_to_drink / 8)} />
+                <Picker.Item label="GLASSES" value={(this.state.goals.left_to_drink / 16)} />
+                <Picker.Item label="LITERS" value={(this.state.goals.amount_drank_today / 33.8)} />
               </Picker>
             </View>
           </View>
@@ -145,9 +145,11 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#ffffff',
   },
-  picker: {
+  pickerContainer: {
     textAlign: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
   }
 
 });

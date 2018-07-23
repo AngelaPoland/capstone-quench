@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import { StyleSheet, Alert, Text, View, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, Alert, Text, View, TextInput, TouchableHighlight, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+const remote = 'https://images.unsplash.com/photo-1532348476153-ae762e3f3bc2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d67f3a0c5319d292fa5a2be534962a9b&auto=format&fit=crop&w=934&q=80'
 
 class Register extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Login Page</Text>
-
-        <Text
-        style={styles.welcome}
-        onPress={() => Actions.tabbar()}
-        >
-        Press Me to get to the app
-        </Text>
+      <ImageBackground style={{ width: '100%', height: '100%' }} source={{ uri: remote }}  >
+      <Text style={styles.buttonText}>Welcome, Fake!</Text>
+      <View> </View>
+      <View> </View>
+      <View> </View>
+      <Text
+      style={styles.buttonText}
+      onPress={() => Actions.tabbar()}
+      >
+      Press Me to get to the app
+      </Text>
+        </ImageBackground>
       </View>
     )
   }
@@ -24,7 +29,7 @@ class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#F5FCFF',
@@ -51,6 +56,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: '#FFF',
     alignSelf: 'center'
+  },
+  buttonText2: {
+    fontSize: 22,
+    color: '#FFF',
+    alignSelf: 'center',
+    borderWidth: 2,
+    borderColor: 'white'
   },
   heading: {
     fontSize: 30,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
@@ -58,6 +58,10 @@ class Account extends Component {
     return waterGoalInOz
   }
 
+  recommendedGoalInfoAlert() {
+    Alert.alert('Lowest amount of water we recommend to drink a day', 'based on your age and weight. When you update that info, this number will change as well. \nYou are encouraged to set a higher goal for yourself.')
+  }
+
 
     render () {
 
@@ -75,7 +79,7 @@ class Account extends Component {
 
           <Text style={styles.goal}> Your Daily Goal:</Text>
           <Text style={styles.goal}>{this.state.user.goal}oz</Text>
-          <Text style={styles.userInfo}>Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
+          <Text style={styles.userInfo} onPress={this.recommendedGoalInfoAlert} >Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
           <View style={styles.buttonLocation}>
           <Text
           style={styles.welcome}
