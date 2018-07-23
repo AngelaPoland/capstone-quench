@@ -4,15 +4,15 @@ import { Router, Scene } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import Login from './components/screens/Login.js'
 import Account from './components/screens/Account.js'
 import EditAccount from './components/screens/EditAccount.js'
 import CreateNotifications from './components/screens/CreateNotifications.js'
 import Today from './components/screens/Today.js'
 import AddWater from './components/screens/AddWater.js'
 import ProgressReports from './components/screens/ProgressReports.js'
-import SearchMap from './components/screens/SearchMap.js'
-
 import ProgressReports2 from './components/screens/ProgressReports2.js'
+import SearchMap from './components/screens/SearchMap.js'
 
 
 class TabIcon extends React.Component {
@@ -35,12 +35,14 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-
+        <Scene key="root">
+          <Scene key="login" style={{flex:1}}  component={Login} hideNavBar={true}/>
           {/* Tab Container */}
           <Scene
             key="tabbar"
             tabs={true}
             tabBarStyle={{ backgroundColor: '#FFFFFF' }}
+            hideNavBar={true}
             >
             <Scene key="accountTab" title="Account" iconName="user" icon={TabIcon}>
               <Scene key="account"
@@ -109,7 +111,7 @@ export default class App extends React.Component {
 
                 />
             </Scene>
-
+            </Scene>
           </Scene>
 
       </Router>

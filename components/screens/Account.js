@@ -37,6 +37,27 @@ class Account extends Component {
     });
   }
 
+  recommendedGoal = () => {
+    let age = this.state.user.age;
+    let weight = this.state.user.weight;
+    let x = weight / 2.2
+    let y = 0
+
+    if (age <= 30) {
+      y = x * 40
+    }
+    else if (age > 30 && age < 55) {
+       y = x * 35
+    }
+    else if (age >= 55){
+      y = x * 30
+    }
+
+    let waterGoalInOz = Math.round( y / 28.32)
+
+    return waterGoalInOz
+  }
+
 
     render () {
 
@@ -52,9 +73,9 @@ class Account extends Component {
             <Text style={styles.userInfo}>Weight: {this.state.user.weight}</Text>
           </View>
 
-
           <Text style={styles.goal}> Your Daily Goal:</Text>
           <Text style={styles.goal}>{this.state.user.goal}oz</Text>
+          <Text style={styles.userInfo}>Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
           <View style={styles.buttonLocation}>
           <Text
           style={styles.welcome}

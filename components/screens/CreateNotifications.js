@@ -26,8 +26,8 @@ class CreateNotifications extends Component {
   _turnOnButtonPress = () => {
 
     const localnotification = {
-      title: 'This is your drink water reminder!',
-      body: 'Have you gotten to your goal yet? No matter where you are at, hydration will make you feel better.',
+      title: 'This is your drink water reminder! 💧',
+      body: 'Have you gotten to your goal yet? No matter where you are at, staying hydrated will make you feel better.',
       android: {
         sound: true,
       },
@@ -38,7 +38,7 @@ class CreateNotifications extends Component {
 
     let sendAfterFiveSeconds = Date.now();
     sendAfterFiveSeconds += 3000;
-    let schedulingOptions = { time: sendAfterFiveSeconds, repeat:'minute' };
+    let schedulingOptions = { time: sendAfterFiveSeconds, repeat:'hour' };
     let hour = new Date().getHours();
 
     if (hour >= 8 && hour < 21) {   //only does notifications between 8am -9pm

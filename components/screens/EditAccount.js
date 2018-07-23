@@ -30,8 +30,8 @@ class EditAccount extends Component {
     axios.put(`http://quenched-api.herokuapp.com/users/1`, user )
     .then(response => {
       console.log(response);
-      console.log('edit GOAL:');
-      console.log(response.data.goal);
+      // console.log('edit GOAL:');
+      // console.log(response.data.goal);
       this.onPressYay();
     })
     .catch(error => {
