@@ -30,6 +30,9 @@ class Account extends Component {
       this.setState({
         user: response.data
       });
+      this.setState({
+        goal: response.data.user.goal
+      });
     })
     .catch( (error) => {
       console.log(error);
@@ -63,6 +66,7 @@ class Account extends Component {
   }
 
 
+
     render () {
 
       const goToEditPage = () => Actions.editAccount({user: this.state.user});
@@ -70,6 +74,7 @@ class Account extends Component {
       return (
         <View style={styles.container}>
         <Text style={styles.userInfo}>User Information</Text>
+
           <View style={styles.userContainer}>
             <Text style={styles.userInfo}>{this.state.user.name}</Text>
             <Text style={styles.userInfo}>{this.state.user.email}</Text>
@@ -77,8 +82,13 @@ class Account extends Component {
             <Text style={styles.userInfo}>Weight: {this.state.user.weight}</Text>
           </View>
 
+
+          <View style={styles.pickerContainer}>
           <Text style={styles.goal}> Your Daily Goal:</Text>
-          <Text style={styles.goal}>{this.state.user.goal}oz</Text>
+          <Text style={styles.goal}>{(this.state.user.goal).toFixed(2)} oz</Text>
+          </View>
+
+
           <Text style={styles.userInfo} onPress={this.recommendedGoalInfoAlert} >Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
           <View style={styles.buttonLocation}>
           <Text
@@ -136,6 +146,12 @@ class Account extends Component {
       position: 'absolute',
       bottom: 0,
 
+    },
+    pickerContainer: {
+      textAlign: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'flex-start',
     }
   });
 
