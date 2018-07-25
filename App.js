@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Asset, AppLoading } from 'expo';
 import { Router, Scene } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -31,8 +32,46 @@ class TabIcon extends React.Component {
 
 export default class App extends React.Component {
 
+  state = {
+      isLoadingComplete: false,
+    };
+
+    _loadResourcesAsync = async () => {
+    return Promise.all([
+      Asset.loadAsync([
+        require('./assets/water-splash.png'),
+        require('./assets/gradient.png'),
+        require('./assets/droplets.png'),
+        require('./assets/circle.jpg'),
+        require('./assets/graph-background.jpg')
+      ])
+    ]);
+  };
+
+  _handleLoadingError = error => {
+    // In this case, you might want to report the error to your error
+    // reporting service, for example Sentry
+    console.warn(error);
+  };
+
+  _handleFinishLoading = () => {
+    this.setState({ isLoadingComplete: true });
+  };
+
 
   render() {
+
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this._loadResourcesAsync}
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
+        />
+      );
+    } else {
+
+
     return (
       <Router navigationBarStyle={{ backgroundColor: '#E4F2FF' }}>
         <Scene key="root">
@@ -118,4 +157,5 @@ export default class App extends React.Component {
       </Router>
     );
   }
+}
 }
