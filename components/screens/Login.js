@@ -9,9 +9,9 @@ class Register extends Component {
     return (
       <View style={styles.container}>
       <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={require('../../assets/water-splash.png')}  >
-      <View style={{height: 60}}> </View>
+      <View style={{height: 10}}> </View>
 
-      <Text style={styles.text}>Welcome to Quench!</Text>
+      <Text style={styles.textWelcome}>Welcome to Quench!</Text>
       <View style={{height: 115}}> </View>
       <TouchableHighlight
       style={styles.button}
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FDFDFB',
     padding: 5,
     paddingTop: 80
   },
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
     width: 'auto',
-    fontFamily: 'San Francisco'
+    fontFamily: 'San Francisco',
+    boxShadow: '1 10 10 black',
   },
   buttonText: {
     fontSize: 22,
@@ -64,6 +65,12 @@ const styles = StyleSheet.create({
     color: 'blue',
     alignSelf: 'center',
     fontFamily: 'San Francisco'
+  },
+  textWelcome: {
+    fontSize: 70,
+    color: 'blue',
+    alignSelf: 'center',
+    fontFamily: 'Savoye LET'
   },
   heading: {
     fontSize: 30,

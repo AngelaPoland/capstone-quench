@@ -126,10 +126,72 @@ class SearchMap extends Component {
             latitude: 47.577500
           }
         },
+        {
+          id: 13,
+          title: 'Water Fountain',
+          description: 'Near Living Computers Museum',
+          coordinate: {
+            longitude: -122.334776,
+            latitude: 47.582310
+          }
+        },
+        {
+          id: 14,
+          title: 'Water Fountain',
+          description: 'Pike Place & Pine St',
+          coordinate: {
+            longitude: -122.341943,
+            latitude: 47.609514
+          }
+        },
+        {
+          id: 15,
+          title: 'Water Fountain',
+          description: 'Lenora St & 6th Ave',
+          coordinate: {
+            longitude: -122.339497,
+            latitude: 47.615387
+          }
+        },
+        {
+          id: 16,
+          title: 'Water Fountain',
+          description: 'Denny Park',
+          coordinate: {
+            longitude: -122.342008,
+            latitude: 47.618670
+          }
+        },
+        {
+          id: 17,
+          title: 'Water Fountain',
+          description: 'Washington Park Playfield',
+          coordinate: {
+            longitude: -122.294887,
+            latitude: 47.626596
+          }
+        },
+        {
+          id: 18,
+          title: 'Water Fountain',
+          description: 'Seattle University',
+          coordinate: {
+            longitude: -122.316924,
+            latitude: 47.609355,
+          }
+        },
+        {
+          id: 19,
+          title: 'Water Fountain',
+          description: 'Freeway Park',
+          coordinate: {
+            longitude: -122.331837,
+            latitude: 47.608646,
+          }
+        },
       ]
     }
   }
-
 
   render() {
     return (

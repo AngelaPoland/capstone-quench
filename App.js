@@ -74,7 +74,7 @@ export default class App extends React.Component {
 
     return (
       <Router navigationBarStyle={{ backgroundColor: '#E4F2FF' }}>
-        <Scene key="root">
+        <Scene key="root" titleStyle={{fontWeight: '100'}}>
           <Scene key="login" style={{flex:1}}  component={Login} hideNavBar={true}/>
           {/* Tab Container */}
           <Scene
@@ -83,18 +83,20 @@ export default class App extends React.Component {
             tabBarStyle={{ backgroundColor: '#E4F2FF' }}
             hideNavBar={true}
             tintColor='blue'
+            tabStyle={{fontWeight: '100'}}
             >
             <Scene key="accountTab" title="Account" iconName="user" icon={TabIcon}>
               <Scene key="account"
                 component={Account}
                 title="Account Information"
-
+                swipeEnabled={true}
                 initial
                 />
               <Scene
                 key="editAccount"
                 component={EditAccount}
                 title="Edit Account"
+
                 />
               <Scene
                 key="createNotifications"
@@ -108,6 +110,7 @@ export default class App extends React.Component {
                 component={Today}
                 title="Today's Progress"
                 onEnter={Today.getGoalInfo}
+                swipeEnabled={true}
                 />
             </Scene>
 
@@ -116,7 +119,7 @@ export default class App extends React.Component {
               <Scene key="account"
                 component={AddWater}
                 title="Add"
-                initial
+                swipeEnabled={true}
                 />
             </Scene>
 
@@ -147,6 +150,7 @@ export default class App extends React.Component {
               <Scene key="find"
                 component={SearchMap}
                 title="Find Water Near You"
+                swipeEnabled={true}
                 />
             </Scene>
             </Scene>

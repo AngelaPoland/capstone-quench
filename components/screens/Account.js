@@ -56,13 +56,13 @@ class Account extends Component {
       y = x * 30
     }
 
-    let waterGoalInOz = Math.round( y / 28.32)
+    let waterGoalInOz = Math.round(y / 28.32)
 
     return waterGoalInOz
   }
 
   recommendedGoalInfoAlert() {
-    Alert.alert('Lowest amount of water we recommend to drink a day', 'based on your age and weight. When you update that info, this number will change as well. \nYou are encouraged to set a higher goal for yourself.')
+    Alert.alert('*Recommended Goal*','Lowest amount of water we recommend to drink a day based on your age and weight. When you update that info, this number will change as well. \nYou are encouraged to set a higher goal for yourself.')
   }
 
 
@@ -91,21 +91,22 @@ class Account extends Component {
           </View>
           <View style={{height: 30}}> </View>
 
-          <Text style={styles.recommended} onPress={this.recommendedGoalInfoAlert} >*Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
+          <Text style={styles.recommended} onPress={this.recommendedGoalInfoAlert} >*Recommended Base Goal: {this.recommendedGoal()}oz</Text>
+          <Text style={styles.recommended} onPress={this.recommendedGoalInfoAlert} >(based on age & weight)</Text>
 
           <View style={styles.buttonLocation}>
           <TouchableHighlight
           style={styles.button}
           onPress={goToEditPage}
           >
-          <Text style={styles.buttonText}>Edit User Info &gt;&gt; </Text>
+          <Text style={styles.buttonText}>Edit Account Info</Text>
         </TouchableHighlight>
         <View style={{height: 10}}> </View>
           <TouchableHighlight
           style={styles.button}
           onPress={() => Actions.createNotifications()}
           >
-          <Text style={styles.buttonText}>Water Reminders &gt;&gt;</Text>
+          <Text style={styles.buttonText}>Water Reminder Settings</Text>
         </TouchableHighlight>
         <View style={{height: 20}}> </View>
           </View>

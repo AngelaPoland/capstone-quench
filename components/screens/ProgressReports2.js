@@ -81,8 +81,9 @@ class ProgressReports2 extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
       <ImageBackground style={{ flex: 1, width: '100%', height: '100%', justifyContent: 'center',alignItems: 'center', }} source={require('../../assets/graph-background.jpg')}  >
-      
+
       <Text style={styles.smallerText}>Glasses drank in last 31 days</Text>
+
       <LineChart
       data={this.parseMonthData()}
       width={screenWidth}
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff',
+    color: 'white',
     fontFamily: 'San Francisco'
   },
 });

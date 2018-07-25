@@ -78,7 +78,7 @@ class Today extends Component {
             />}
             style={styles.container}>
 
-
+            <View style={{height: 30}}> </View>
 
               <View style={styles.pickerContainer}>
                 <Text style={styles.welcome}>Water consumed: {(this.state.progress).toFixed(2)}</Text>
@@ -88,7 +88,7 @@ class Today extends Component {
                     selectedValue={this.state.progress}
                     onValueChange = {this.updateProgress}
                     style={{height: 50, width: 100, alignSelf: 'center'}}
-                    itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor: '#1E69AD'}}
+                    itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor: '#9DD2F9'}}
                     >
                     <Picker.Item label="OZ" value = {this.state.goals.amount_drank_today} />
                     <Picker.Item label="CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
@@ -117,7 +117,7 @@ class Today extends Component {
 
             </ImageBackground>
             </View>
-            <View style={{height: 100}}> </View>
+            <View style={{height: 120}}> </View>
 
             <View style={styles.pickerContainer}>
               <Text style={styles.welcome}>Amount remaining: {(this.state.left).toFixed(2)}</Text>
@@ -126,13 +126,13 @@ class Today extends Component {
                   selectedValue = {this.state.left}
                   onValueChange = {this.updateLeft}
                   style={{height: 100, width: 100}}
-                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor: '#1E69AD'}}
+                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor: '#9DD2F9'}}
                   >
                   <Picker.Item label="OZ" value={this.state.goals.left_to_drink} style={{borderBottomColor: 'white',
                     borderBottomWidth: 1,}}  />
                   <Picker.Item label="CUPS" value={(this.state.goals.left_to_drink / 8)} />
                   <Picker.Item label="GLASSES" value={(this.state.goals.left_to_drink / 16)} />
-                  <Picker.Item label="LITERS" value={(this.state.goals.amount_drank_today / 33.8)} />
+                  <Picker.Item label="LITERS" value={(this.state.goals.left_to_drink / 33.8)} />
                 </Picker>
               </View>
             </View>
@@ -156,7 +156,7 @@ class Today extends Component {
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        color: 'black',
+        color: '#084776',
       },
       text: {
         fontSize: 15,
