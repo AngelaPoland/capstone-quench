@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker, ScrollView, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, Picker, ScrollView, RefreshControl, ImageBackground } from 'react-native';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import ProgressCircle from 'react-native-progress-circle'
@@ -65,9 +65,6 @@ class Today extends Component {
   };
 
 
-
-
-
   render () {
 
 
@@ -80,17 +77,17 @@ class Today extends Component {
             onRefresh={this._onRefresh}
             />}
             style={styles.container}>
-
+            <ImageBackground style={styles.background} source={require('../../assets/circle.jpg')}  >
             <Text style={styles.welcome}>Percent Towards Goal: </Text>
             <ProgressCircle
               percent={this.state.goals.percent_drank_towards_goal}
-              radius={80}
+              radius={90}
               borderWidth={10}
               color="#1005E6"
               shadowColor="#999"
               bgColor="#fff"
               >
-              <Text style={{ fontSize: 24, color : '#2A089B' }}>{this.state.goals.percent_drank_towards_goal}%</Text>
+              <Text style={{ fontSize: 40, color : '#2A089B' }}>{this.state.goals.percent_drank_towards_goal}%</Text>
             </ProgressCircle>
             <Text></Text>
 
@@ -102,7 +99,7 @@ class Today extends Component {
                   selectedValue={this.state.progress}
                   onValueChange = {this.updateProgress}
                   style={{height: 50, width: 100, alignSelf: 'center'}}
-                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'white', borderWidth:2, borderColor : 'red'}}
+                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor : 'light blue'}}
                   >
                   <Picker.Item label="OZ" value = {this.state.goals.amount_drank_today} />
                   <Picker.Item label="CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
@@ -120,7 +117,7 @@ class Today extends Component {
                   selectedValue = {this.state.left}
                   onValueChange = {this.updateLeft}
                   style={{height: 100, width: 100}}
-                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'white', borderWidth:2, borderColor : 'red'}}
+                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor : 'light blue'}}
                   >
                   <Picker.Item label="OZ" value={this.state.goals.left_to_drink} style={{borderBottomColor: 'white',
                     borderBottomWidth: 1,}}  />
@@ -130,6 +127,7 @@ class Today extends Component {
                 </Picker>
               </View>
             </View>
+            </ImageBackground>
           </ScrollView>
 
         );
@@ -141,26 +139,34 @@ class Today extends Component {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#236F76',
+        backgroundColor: 'white',
         padding: 10,
       },
       welcome: {
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        color: '#ffffff',
+        color: 'black',
       },
       text: {
         fontSize: 15,
         textAlign: 'center',
         margin: 10,
-        color: '#ffffff',
+        color: 'black',
       },
       pickerContainer: {
         textAlign: 'center',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'flex-start',
+      },
+      background: {
+
+        width: undefined,
+        height: undefined,
+        flexDirection: 'column',
+        backgroundColor:'transparent',
+        justifyContent: 'flex-start',
       }
 
     });

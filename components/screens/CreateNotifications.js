@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Alert, Platform } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Alert, Platform, ImageBackground } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import { Notifications, Permissions } from 'expo';
 
@@ -81,7 +81,7 @@ class CreateNotifications extends Component {
 
   return (
     <View style={styles.container}>
-
+      <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={require('../../assets/droplets.png')}  >
       <Text
         style={styles.welcome}
         // onPress={() => Actions.account()}
@@ -107,7 +107,7 @@ class CreateNotifications extends Component {
           TURN OFF NOTIFICATIONS
         </Text>
       </TouchableHighlight>
-
+      </ImageBackground>
     </View>
   );
 }
@@ -124,18 +124,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff',
+    color: '#042D9C',
+    backgroundColor: 'white',
+    fontFamily: 'San Francisco'
   },
   button: {
-    color: 'white',
-    borderColor: 'white',
+    color: '#042D9C',
+    borderColor: '#042D9C',
     borderRadius: 10,
     borderWidth: 5,
     padding: 5,
     marginTop: 50,
+    backgroundColor: 'white',
+    fontFamily: 'San Francisco'
   },
   text: {
-    color: 'white',
+    color: '#042D9C',
+    backgroundColor: 'white',
+    fontFamily: 'San Francisco'
   }
 });
 

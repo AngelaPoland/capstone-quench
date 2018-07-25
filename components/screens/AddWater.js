@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, Picker, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableHighlight, Picker, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native';
 import axios from 'axios';
 
 class AddWater extends Component {
@@ -84,6 +84,7 @@ class AddWater extends Component {
 
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
+
       <View style={styles.formContainer}>
       <Text style={styles.heading}>I just drank this much water:</Text>
       <TextInput
@@ -116,6 +117,7 @@ class AddWater extends Component {
       </TouchableHighlight>
       <View style={{height: 10}}> </View>
       </View>
+      
       </TouchableWithoutFeedback>
     );
   }
@@ -133,6 +135,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',
+    fontFamily: 'Baskerville'
   },
   input: {
     height: 50,
@@ -142,9 +145,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#48bbec',
     alignSelf: 'stretch',
+    fontFamily: 'San Francisco'
   },
   heading: {
     fontSize: 30,
+    fontFamily: 'San Francisco'
   },
   formContainer: {
     flex: 1,
@@ -160,16 +165,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#48BBEC',
     alignSelf: 'stretch',
     marginTop: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontFamily: 'San Francisco'
   },
   buttonText: {
     fontSize: 22,
     color: '#FFF',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontFamily: 'San Francisco'
   },
   picker: {
     flex: 1,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Baskerville'
   }
 });
 

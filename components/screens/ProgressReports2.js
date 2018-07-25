@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import axios from 'axios';
 import { LineChart } from 'react-native-chart-kit'
 
@@ -79,18 +79,18 @@ class ProgressReports2 extends Component {
 
   render() {
     return (
-
       <ScrollView contentContainerStyle={styles.container}>
-
-      <Text style={styles.text}>Month Report</Text>
+      <ImageBackground style={{ flex: 1, width: '100%', height: '100%', justifyContent: 'center',alignItems: 'center', }} source={require('../../assets/graph-background.jpg')}  >
+      
       <Text style={styles.smallerText}>Glasses drank in last 31 days</Text>
       <LineChart
       data={this.parseMonthData()}
       width={screenWidth}
-      height={220}
+      height={200}
       chartConfig={chartConfig}
       bezier
       />
+      </ImageBackground>
       </ScrollView>
 
     );
@@ -109,18 +109,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',
+    fontFamily: 'San Francisco'
   },
   text: {
     fontSize: 16,
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff',
+    color: 'blue',
+    fontFamily: 'San Francisco'
   },
   smallerText: {
     fontSize: 14,
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',
+    fontFamily: 'San Francisco'
   },
 });
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
@@ -73,7 +73,8 @@ class Account extends Component {
 
       return (
         <View style={styles.container}>
-        <Text style={styles.userInfo}>User Information</Text>
+          <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={require('../../assets/gradient.png')}  >
+          <Text style={styles.userInfo}>User Information</Text>
 
           <View style={styles.userContainer}>
             <Text style={styles.userInfo}>{this.state.user.name}</Text>
@@ -85,7 +86,7 @@ class Account extends Component {
 
           <View style={styles.pickerContainer}>
           <Text style={styles.goal}> Your Daily Goal:</Text>
-          <Text style={styles.goal}>{(this.state.user.goal).toFixed(2)} oz</Text>
+          <Text style={styles.goal}>{(this.state.user.goal)} oz</Text>
           </View>
 
 
@@ -104,6 +105,7 @@ class Account extends Component {
           Press Me for Water Reminders
           </Text>
           </View>
+          </ImageBackground>
         </View>
       );
     }
@@ -123,20 +125,23 @@ class Account extends Component {
       color: '#331494',
       borderWidth: 2,
       borderColor: '#331494',
+      fontFamily: 'San Francisco'
     },
     userInfo: {
       fontSize: 30,
-      color: '#331494',
+      color: 'white',
       textAlign: 'center',
       borderWidth: 1,
       borderColor: '#0D3CA7',
       padding: 2,
+      fontFamily: 'San Francisco'
     },
     goal: {
       fontSize: 40,
-      color: '#1255EF',
+      color: 'white',
       textAlign: 'center',
       paddingTop: 30,
+      fontFamily: 'San Francisco'
     },
     userContainer: {
       borderColor: 'green',
