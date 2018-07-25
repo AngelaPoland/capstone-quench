@@ -34,20 +34,21 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Router>
+      <Router navigationBarStyle={{ backgroundColor: '#E4F2FF' }}>
         <Scene key="root">
           <Scene key="login" style={{flex:1}}  component={Login} hideNavBar={true}/>
           {/* Tab Container */}
           <Scene
             key="tabbar"
             tabs={true}
-            tabBarStyle={{ backgroundColor: '#FFFFFF' }}
+            tabBarStyle={{ backgroundColor: '#E4F2FF' }}
             hideNavBar={true}
+            tintColor='blue'
             >
             <Scene key="accountTab" title="Account" iconName="user" icon={TabIcon}>
               <Scene key="account"
                 component={Account}
-                title="Account Page"
+                title="Account Information"
 
                 initial
                 />
@@ -90,13 +91,13 @@ export default class App extends React.Component {
               swipeEnabled={true}
 
               >
-              <Scene key="ProgressReportTab1" title="Week" iconName="angle-double-left" icon={TabIcon} showLabel={false}>
+              <Scene key="ProgressReportTab1" title="Week Report" iconName="angle-double-left" icon={TabIcon} showLabel={false}>
                 <Scene key="report"
                   component={ProgressReports}
 
                 />
               </Scene>
-              <Scene key="ProgressReportTab2" title="Month" iconName="angle-double-right" icon={TabIcon} showLabel={false}>
+              <Scene key="ProgressReportTab2" title="Month Report" iconName="angle-double-right" icon={TabIcon} showLabel={false}>
                 <Scene key="report2"
                   component={ProgressReports2}
                   title="Month"

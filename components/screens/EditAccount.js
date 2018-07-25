@@ -57,13 +57,11 @@ class EditAccount extends Component {
     console.log(this.state);
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
-
         <KeyboardAwareScrollView
           style={{ backgroundColor: 'white' }}
           resetScrollToCoords={{ x: 0, y: 0 }}
           scrollEnabled={true}
           >
-
           <View style={styles.formContainer}>
             <Text style={styles.heading}>
               Edit Your Account Information:
@@ -74,25 +72,25 @@ class EditAccount extends Component {
               onChangeText={ (text)=> this.setState({name: text}) }
               style={styles.input} autoCapitalize='words' defaultValue={this.props.user.name}>
             </TextInput>
-            <Text>Name</Text>
+            <Text style={styles.text}>Name</Text>
 
             <TextInput
               onChangeText={ (text)=> this.setState({email: text}) }
               style={styles.input} keyboardType='email-address' defaultValue={this.props.user.email}>
             </TextInput>
-            <Text>Email</Text>
+            <Text style={styles.text}>Email</Text>
 
             <TextInput
               onChangeText={ (text)=> this.setState({age: text}) }
               style={styles.input} keyboardType='numeric' defaultValue={this.props.user.age.toString()}>
             </TextInput>
-            <Text>Age</Text>
+            <Text style={styles.text}>Age</Text>
 
             <TextInput
               onChangeText={ (text)=> this.setState({weight: text}) }
               style={styles.input} keyboardType='numeric' defaultValue={this.props.user.weight.toString()} >
             </TextInput>
-            <Text>Weight(lbs)</Text>
+            <Text style={styles.text}>Weight(lbs)</Text>
 
             <TextInput
               onChangeText={ (text)=> this.setState({goal: text}) }
@@ -101,7 +99,7 @@ class EditAccount extends Component {
               defaultValue={this.props.user.goal.toString()}
               keyboardType='numeric'>
             </TextInput>
-            <Text>Goal in Oz (8oz in a cup, or 16oz in a glass)</Text>
+            <Text style={styles.text}>Goal in Oz (8oz in a cup, or 16oz in a glass)</Text>
 
             <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
               <Text style={styles.buttonText}>
@@ -146,6 +144,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#48bbec',
     alignSelf: 'stretch',
+    fontFamily: 'Baskerville'
   },
   button: {
     height: 50,
@@ -157,10 +156,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 22,
     color: '#FFF',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontFamily: 'Baskerville'
   },
   heading: {
     fontSize: 30,
+    fontFamily: 'Baskerville'
   },
   error: {
     color: 'red',
@@ -168,6 +169,9 @@ const styles = StyleSheet.create({
   },
   loader: {
     marginTop: 20
+  },
+  text: {
+    fontFamily: 'Baskerville'
   }
 });
 

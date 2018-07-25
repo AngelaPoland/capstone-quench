@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker, ScrollView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { StyleSheet, Text, View, Picker, ScrollView, RefreshControl, ImageBackground } from 'react-native';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import ProgressCircle from 'react-native-progress-circle'
@@ -14,6 +13,7 @@ class Today extends Component {
       value: 0,
       progress: 0,
       left: 0,
+      refreshing: false,
     }
   }
 
@@ -36,9 +36,7 @@ class Today extends Component {
 
   componentDidMount() {
     this.getGoalInfo();
-    // this.interval = setInterval(this.getGoalInfo, 30000);
-    setInterval(this.getGoalInfo.bind(this), 10000)
-    // setInterval(function(){ this.getGoalInfo }, 10000);
+    // setInterval(this.getGoalInfo.bind(this), 10000)
   }
 
   getGoalInfo = () => {
@@ -60,8 +58,11 @@ class Today extends Component {
     });
   }
 
-
-
+  _onRefresh = () => {
+    this.setState({ refreshing: true });
+    this.getGoalInfo()
+    this.setState({ refreshing: false });
+  };
 
 
   render () {
@@ -69,94 +70,110 @@ class Today extends Component {
 
     return (
 
-        <View style={styles.container}>
-          <Text style={styles.welcome}>Percent Towards Goal: </Text>
-          <ProgressCircle
-            percent={this.state.goals.percent_drank_towards_goal}
-            radius={80}
-            borderWidth={10}
-            color="#1005E6"
-            shadowColor="#999"
-            bgColor="#fff"
-            >
-            <Text style={{ fontSize: 24, color : '#2A089B' }}>{this.state.goals.percent_drank_towards_goal}%</Text>
-          </ProgressCircle>
-          <Text></Text>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+            />}
+            style={styles.container}>
+            <ImageBackground style={styles.background} source={require('../../assets/circle.jpg')}  >
+            <Text style={styles.welcome}>Percent Towards Goal: </Text>
+            <ProgressCircle
+              percent={this.state.goals.percent_drank_towards_goal}
+              radius={90}
+              borderWidth={10}
+              color="#1005E6"
+              shadowColor="#999"
+              bgColor="#fff"
+              >
+              <Text style={{ fontSize: 40, color : '#2A089B' }}>{this.state.goals.percent_drank_towards_goal}%</Text>
+            </ProgressCircle>
+            <Text></Text>
 
-          <View style={styles.picker}>
-            <Text style={styles.welcome}>Amount drunk so far: {(this.state.progress).toFixed(2)}</Text>
+            <View style={styles.pickerContainer}>
+              <Text style={styles.welcome}>Amount drunk so far: {(this.state.progress).toFixed(2)}</Text>
 
-            <View style={{ marginLeft: 50, marginRight: 50 }}>
-              <Picker
-                selectedValue={this.state.progress}
-                onValueChange = {this.updateProgress}
-                style={{height: 100, width: 100}}
-                itemStyle={{fontSize: 12, fontWeight: 'bold', color: 'white'}}
-                >
-                <Picker.Item label="OZ" value = {this.state.goals.amount_drank_today} />
-                <Picker.Item label="CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
-                <Picker.Item label="GLASSES" value = {(this.state.goals.amount_drank_today / 16)} />
-                <Picker.Item label="LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
-              </Picker>
+              <View >
+                <Picker
+                  selectedValue={this.state.progress}
+                  onValueChange = {this.updateProgress}
+                  style={{height: 50, width: 100, alignSelf: 'center'}}
+                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor : 'light blue'}}
+                  >
+                  <Picker.Item label="OZ" value = {this.state.goals.amount_drank_today} />
+                  <Picker.Item label="CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
+                  <Picker.Item label="GLASSES" value = {(this.state.goals.amount_drank_today / 16)} />
+                  <Picker.Item label="LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
+                </Picker>
+              </View>
             </View>
-          </View>
 
-          <View style={styles.pickerContainer}>
-            <Text style={styles.welcome}>Amount left to drink: {(this.state.left).toFixed(2)}</Text>
+            <View style={styles.pickerContainer}>
+              <Text style={styles.welcome}>Amount left to drink: {(this.state.left).toFixed(2)}</Text>
 
-            <View style={{ marginLeft: 80, marginRight: 80, borderWidth:2, borderColor : 'red' }}>
-              <Picker
-                selectedValue = {this.state.left}
-                onValueChange = {this.updateLeft}
-                style={{height: 100, width: 100}}
-                itemStyle={{fontSize: 12, fontWeight: 'bold', color: 'white',  borderWidth:2, borderColor : 'red'}}
-                >
-                <Picker.Item label="OZ" value={this.state.goals.left_to_drink} style={{borderBottomColor: 'white',
-        borderBottomWidth: 1,}}  />
-                <Picker.Item label="CUPS" value={(this.state.goals.left_to_drink / 8)} />
-                <Picker.Item label="GLASSES" value={(this.state.goals.left_to_drink / 16)} />
-                <Picker.Item label="LITERS" value={(this.state.goals.amount_drank_today / 33.8)} />
-              </Picker>
+              <View >
+                <Picker
+                  selectedValue = {this.state.left}
+                  onValueChange = {this.updateLeft}
+                  style={{height: 100, width: 100}}
+                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor : 'light blue'}}
+                  >
+                  <Picker.Item label="OZ" value={this.state.goals.left_to_drink} style={{borderBottomColor: 'white',
+                    borderBottomWidth: 1,}}  />
+                  <Picker.Item label="CUPS" value={(this.state.goals.left_to_drink / 8)} />
+                  <Picker.Item label="GLASSES" value={(this.state.goals.left_to_drink / 16)} />
+                  <Picker.Item label="LITERS" value={(this.state.goals.amount_drank_today / 33.8)} />
+                </Picker>
+              </View>
             </View>
-          </View>
-        </View>
+            </ImageBackground>
+          </ScrollView>
 
-    );
-  }
-}
+        );
+      }
+    }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#236F76',
-    padding: 10,
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-  },
-  text: {
-    fontSize: 15,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-  },
-  pickerContainer: {
-    textAlign: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'flex-start',
-  }
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        padding: 10,
+      },
+      welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        color: 'black',
+      },
+      text: {
+        fontSize: 15,
+        textAlign: 'center',
+        margin: 10,
+        color: 'black',
+      },
+      pickerContainer: {
+        textAlign: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'flex-start',
+      },
+      background: {
 
-});
+        width: undefined,
+        height: undefined,
+        flexDirection: 'column',
+        backgroundColor:'transparent',
+        justifyContent: 'flex-start',
+      }
 
-Today.propTypes = {
-  enterTime: PropTypes.func.isRequired
-};
+    });
+
+    Today.propTypes = {
+      enterTime: PropTypes.func.isRequired
+    };
 
 
-export default Today;
+    export default Today;
