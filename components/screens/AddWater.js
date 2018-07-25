@@ -58,7 +58,6 @@ class AddWater extends Component {
        this.clearForm();
   }
 
-
   onPressYay() {
     Alert.alert('Water Entry Added!')
   }
@@ -78,7 +77,6 @@ class AddWater extends Component {
   seeState = () => {
     console.log(this.state);
   }
-
 
   render () {
 
@@ -110,7 +108,7 @@ class AddWater extends Component {
 
       <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
       <Text style={styles.buttonText}>
-      Add Water Entry
+      Add Water Intake
       </Text>
       </TouchableHighlight>
       <View style={{height: 30}}> </View>
@@ -133,7 +131,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     color: 'blue',
-    fontFamily: 'Baskerville'
+    fontFamily: 'San Francisco'
   },
   input: {
     height: 50,
@@ -143,11 +141,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#48bbec',
     alignSelf: 'stretch',
-    fontFamily: 'San Francisco'
+    fontFamily: 'San Francisco',
+    borderRadius: 10,
   },
   heading: {
     fontSize: 30,
-    fontFamily: 'San Francisco'
+    fontFamily: 'San Francisco',
+    color: 'blue'
   },
   formContainer: {
     flex: 1,
@@ -164,18 +164,19 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     marginTop: 10,
     justifyContent: 'center',
-    fontFamily: 'San Francisco'
+    fontFamily: 'San Francisco',
+    borderRadius: 10,
   },
   buttonText: {
     fontSize: 22,
     color: '#FFF',
     alignSelf: 'center',
-    fontFamily: 'San Francisco'
+    fontFamily: 'San Francisco',
   },
   picker: {
     flex: 1,
     textAlign: 'center',
-    fontFamily: 'Baskerville'
+    fontFamily: 'San Francisco'
   }
 });
 

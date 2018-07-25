@@ -106,7 +106,7 @@ export default class App extends React.Component {
             <Scene key="todayTab" title="Today" iconName="tint" icon={TabIcon} >
               <Scene key="today"
                 component={Today}
-                title="Today"
+                title="Today's Progress"
                 onEnter={Today.getGoalInfo}
                 />
             </Scene>
@@ -133,7 +133,6 @@ export default class App extends React.Component {
               <Scene key="ProgressReportTab1" title="Week Report" iconName="angle-double-left" icon={TabIcon} showLabel={false}>
                 <Scene key="report"
                   component={ProgressReports}
-
                 />
               </Scene>
               <Scene key="ProgressReportTab2" title="Month Report" iconName="angle-double-right" icon={TabIcon} showLabel={false}>
@@ -147,8 +146,7 @@ export default class App extends React.Component {
             <Scene key="findTab" title="Find" iconName="map" icon={TabIcon}>
               <Scene key="find"
                 component={SearchMap}
-                title="Find Water"
-
+                title="Find Water Near You"
                 />
             </Scene>
             </Scene>

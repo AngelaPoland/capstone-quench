@@ -77,11 +77,11 @@ class Today extends Component {
             onRefresh={this._onRefresh}
             />}
             style={styles.container}>
-            <ImageBackground style={styles.background} source={require('../../assets/circle.jpg')} >
+
 
 
               <View style={styles.pickerContainer}>
-                <Text style={styles.welcome}>Amount drunk so far: {(this.state.progress).toFixed(2)}</Text>
+                <Text style={styles.welcome}>Water consumed: {(this.state.progress).toFixed(2)}</Text>
 
                 <View >
                   <Picker
@@ -98,13 +98,16 @@ class Today extends Component {
                 </View>
               </View>
 
-              <View style={{height: 30}}> </View>
+
+
+              <View style={{height: 300, flexDirection: 'row', justifyContent: 'center',}}>
+            <ImageBackground style={styles.background} source={require('../../assets/circle.jpg')} >
 
             <ProgressCircle
               percent={this.state.goals.percent_drank_towards_goal}
               radius={90}
               borderWidth={10}
-              color="#1005E6"
+              color="#0B70BB"
               shadowColor="#999"
               bgColor="#fff"
               >
@@ -112,10 +115,12 @@ class Today extends Component {
             </ProgressCircle>
 
 
-
+            </ImageBackground>
+            </View>
+            <View style={{height: 100}}> </View>
 
             <View style={styles.pickerContainer}>
-              <Text style={styles.welcome}>Amount left to drink: {(this.state.left).toFixed(2)}</Text>
+              <Text style={styles.welcome}>Amount remaining: {(this.state.left).toFixed(2)}</Text>
               <View >
                 <Picker
                   selectedValue = {this.state.left}
@@ -131,7 +136,7 @@ class Today extends Component {
                 </Picker>
               </View>
             </View>
-            </ImageBackground>
+
           </ScrollView>
 
         );
@@ -141,8 +146,9 @@ class Today extends Component {
     const styles = StyleSheet.create({
       container: {
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'space-around',
         backgroundColor: 'white',
         padding: 10,
       },
@@ -165,11 +171,13 @@ class Today extends Component {
         alignItems: 'flex-start',
       },
       background: {
-        width: undefined,
-        height: undefined,
+        width: 400,
+        height: 400,
         flexDirection: 'column',
         backgroundColor:'transparent',
-        justifyContent: 'flex-start',
+        alignItems: 'center',
+        justifyContent: 'center',
+
       }
 
     });
