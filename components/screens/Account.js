@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Alert, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Alert, TouchableHighlight, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
@@ -74,10 +74,10 @@ class Account extends Component {
       return (
         <View style={styles.container}>
           <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={require('../../assets/gradient.png')}  >
-          <Text style={styles.userInfo}>User Information</Text>
 
-          <View style={styles.userContainer}>
-            <Text style={styles.userInfo}>{this.state.user.name}</Text>
+            <View style={{height: 20}}> </View>
+          <View >
+            <Text style={styles.goal}>{this.state.user.name}</Text>
             <Text style={styles.userInfo}>{this.state.user.email}</Text>
             <Text style={styles.userInfo}>Age: {this.state.user.age}</Text>
             <Text style={styles.userInfo}>Weight: {this.state.user.weight}</Text>
@@ -87,24 +87,29 @@ class Account extends Component {
           <View style={styles.pickerContainer}>
           <Text style={styles.goal}> Your Daily Goal:</Text>
           <Text style={styles.goal}>{(this.state.user.goal)} oz</Text>
+
           </View>
+          <View style={{height: 30}}> </View>
 
+          <Text style={styles.recommended} onPress={this.recommendedGoalInfoAlert} >*Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
 
-          <Text style={styles.userInfo} onPress={this.recommendedGoalInfoAlert} >Recommended Goal (based on age and weight): {this.recommendedGoal()}oz</Text>
           <View style={styles.buttonLocation}>
-          <Text
-          style={styles.welcome}
+          <TouchableHighlight
+          style={styles.button}
           onPress={goToEditPage}
           >
-          Press me to get to edit your User Info
-          </Text>
-          <Text
-          style={styles.welcome}
+          <Text style={styles.buttonText}>Edit User Info &gt;&gt; </Text>
+        </TouchableHighlight>
+        <View style={{height: 10}}> </View>
+          <TouchableHighlight
+          style={styles.button}
           onPress={() => Actions.createNotifications()}
           >
-          Press Me for Water Reminders
-          </Text>
+          <Text style={styles.buttonText}>Water Reminders &gt;&gt;</Text>
+        </TouchableHighlight>
+        <View style={{height: 20}}> </View>
           </View>
+
           </ImageBackground>
         </View>
       );
@@ -118,22 +123,17 @@ class Account extends Component {
       alignItems: 'center',
       backgroundColor: '#E5F6F8',
     },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-      color: '#331494',
-      borderWidth: 2,
-      borderColor: '#331494',
-      fontFamily: 'San Francisco'
-    },
     userInfo: {
       fontSize: 30,
       color: 'white',
       textAlign: 'center',
-      borderWidth: 1,
-      borderColor: '#0D3CA7',
       padding: 2,
+      fontFamily: 'San Francisco'
+    },
+    recommended: {
+      fontSize: 20,
+      color: 'white',
+      textAlign: 'center',
       fontFamily: 'San Francisco'
     },
     goal: {
@@ -143,14 +143,30 @@ class Account extends Component {
       paddingTop: 30,
       fontFamily: 'San Francisco'
     },
-    userContainer: {
-      borderColor: 'green',
-      borderWidth: 1,
-    },
     buttonLocation: {
       position: 'absolute',
       bottom: 0,
-
+      alignSelf: 'center'
+    },
+    button: {
+      height: 50,
+      backgroundColor: '#205AC7',
+      alignSelf: 'stretch',
+      marginLeft: 30,
+      marginRight: 30,
+      justifyContent: 'center',
+      borderWidth: 2,
+      borderColor: '#205AC7',
+      borderRadius: 10,
+      width: 'auto',
+      fontFamily: 'San Francisco',
+      padding: 5
+    },
+    buttonText: {
+      fontSize: 22,
+      color: 'white',
+      alignSelf: 'center',
+      fontFamily: 'San Francisco'
     },
     pickerContainer: {
       textAlign: 'center',

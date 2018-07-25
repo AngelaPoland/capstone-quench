@@ -121,12 +121,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#666666',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-  },
   formContainer: {
     flex: 1,
     justifyContent: 'flex-start',
@@ -144,14 +138,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#48bbec',
     alignSelf: 'stretch',
-    fontFamily: 'Baskerville'
+    fontFamily: 'Baskerville',
+    borderRadius: 10,
+    color: '#4F5052'
   },
   button: {
     height: 50,
     backgroundColor: '#48BBEC',
     alignSelf: 'stretch',
     marginTop: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius: 10,
   },
   buttonText: {
     fontSize: 22,

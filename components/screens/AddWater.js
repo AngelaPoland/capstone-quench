@@ -93,21 +93,19 @@ class AddWater extends Component {
       </TextInput>
 
       <View style={styles.picker}>
-      <Text style={styles.welcome}>Please pick the measurement:</Text>
+      <Text style={styles.welcome}>Please pick a measurement:</Text>
 
       <Picker
       selectedValue={this.state.measurement}
-      onValueChange={(value) => {
-        console.log(value);
-        this.updateMeasurement(value);
-      }}
-      style={{height: 100, width: 100}}>
+      onValueChange={(value) => {this.updateMeasurement(value);}}
+      style={{height: 100, width: 100, alignSelf: 'center'}}
+      itemStyle={{ fontSize: 20, fontWeight: 'bold', color: 'blue'}}
+      >
       <Picker.Item label = "OZ" value = "OZ" />
       <Picker.Item label = "CUP(S)" value = "CUPS" />
       <Picker.Item label = "GLASSES" value = "GLASSES" />
       <Picker.Item label = "LITERS" value = "LITERS" />
       </Picker>
-
       </View>
 
       <TouchableHighlight onPress={this.onFormSubmit} style={styles.button}>
@@ -115,9 +113,9 @@ class AddWater extends Component {
       Add Water Entry
       </Text>
       </TouchableHighlight>
-      <View style={{height: 10}}> </View>
+      <View style={{height: 30}}> </View>
       </View>
-      
+
       </TouchableWithoutFeedback>
     );
   }
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff',
+    color: 'blue',
     fontFamily: 'Baskerville'
   },
   input: {

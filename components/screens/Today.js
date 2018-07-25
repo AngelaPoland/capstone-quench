@@ -77,8 +77,29 @@ class Today extends Component {
             onRefresh={this._onRefresh}
             />}
             style={styles.container}>
-            <ImageBackground style={styles.background} source={require('../../assets/circle.jpg')}  >
-            <Text style={styles.welcome}>Percent Towards Goal: </Text>
+            <ImageBackground style={styles.background} source={require('../../assets/circle.jpg')} >
+
+
+              <View style={styles.pickerContainer}>
+                <Text style={styles.welcome}>Amount drunk so far: {(this.state.progress).toFixed(2)}</Text>
+
+                <View >
+                  <Picker
+                    selectedValue={this.state.progress}
+                    onValueChange = {this.updateProgress}
+                    style={{height: 50, width: 100, alignSelf: 'center'}}
+                    itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor: '#1E69AD'}}
+                    >
+                    <Picker.Item label="OZ" value = {this.state.goals.amount_drank_today} />
+                    <Picker.Item label="CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
+                    <Picker.Item label="GLASSES" value = {(this.state.goals.amount_drank_today / 16)} />
+                    <Picker.Item label="LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
+                  </Picker>
+                </View>
+              </View>
+
+              <View style={{height: 30}}> </View>
+
             <ProgressCircle
               percent={this.state.goals.percent_drank_towards_goal}
               radius={90}
@@ -89,35 +110,18 @@ class Today extends Component {
               >
               <Text style={{ fontSize: 40, color : '#2A089B' }}>{this.state.goals.percent_drank_towards_goal}%</Text>
             </ProgressCircle>
-            <Text></Text>
 
-            <View style={styles.pickerContainer}>
-              <Text style={styles.welcome}>Amount drunk so far: {(this.state.progress).toFixed(2)}</Text>
 
-              <View >
-                <Picker
-                  selectedValue={this.state.progress}
-                  onValueChange = {this.updateProgress}
-                  style={{height: 50, width: 100, alignSelf: 'center'}}
-                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor : 'light blue'}}
-                  >
-                  <Picker.Item label="OZ" value = {this.state.goals.amount_drank_today} />
-                  <Picker.Item label="CUPS" value = {(this.state.goals.amount_drank_today / 8)} />
-                  <Picker.Item label="GLASSES" value = {(this.state.goals.amount_drank_today / 16)} />
-                  <Picker.Item label="LITERS" value = {(this.state.goals.amount_drank_today / 33.8)} />
-                </Picker>
-              </View>
-            </View>
+
 
             <View style={styles.pickerContainer}>
               <Text style={styles.welcome}>Amount left to drink: {(this.state.left).toFixed(2)}</Text>
-
               <View >
                 <Picker
                   selectedValue = {this.state.left}
                   onValueChange = {this.updateLeft}
                   style={{height: 100, width: 100}}
-                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor : 'light blue'}}
+                  itemStyle={{height: 50, width: 60, fontSize: 12, fontWeight: 'bold', color: 'blue', borderWidth:2, borderColor: '#1E69AD'}}
                   >
                   <Picker.Item label="OZ" value={this.state.goals.left_to_drink} style={{borderBottomColor: 'white',
                     borderBottomWidth: 1,}}  />
@@ -161,7 +165,6 @@ class Today extends Component {
         alignItems: 'flex-start',
       },
       background: {
-
         width: undefined,
         height: undefined,
         flexDirection: 'column',

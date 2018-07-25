@@ -9,10 +9,9 @@ class Register extends Component {
     return (
       <View style={styles.container}>
       <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={require('../../assets/water-splash.png')}  >
-      <Text style={styles.text}>Welcome, Fake!</Text>
-      <View> </View>
-      <View> </View>
-      <View> </View>
+      <View style={{height: 60}}> </View>
+      <Text style={styles.text}>Welcome, Angela!</Text>
+      <View style={{height: 130}}> </View>
       <TouchableHighlight
       style={styles.button}
       onPress={() => Actions.tabbar()}
@@ -37,19 +36,18 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    backgroundColor: '#48BBEC',
+    backgroundColor: '#023BA5',
     alignSelf: 'stretch',
-    marginTop: 10,
+    marginLeft: 30,
+    marginRight: 30,
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#48bbec',
     borderRadius: 10,
     width: 'auto',
     fontFamily: 'San Francisco'
   },
   buttonText: {
     fontSize: 22,
-    color: 'blue',
+    color: 'white',
     alignSelf: 'center',
     fontFamily: 'San Francisco'
   },

@@ -82,28 +82,32 @@ class CreateNotifications extends Component {
   return (
     <View style={styles.container}>
       <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={require('../../assets/droplets.png')}  >
-      <Text
-        style={styles.welcome}
-        // onPress={() => Actions.account()}
-      >
-        Create Notifications Page
+
+      <View style={{height: 80}}> </View>
+      <View style={styles.textContainer}>
+      <Text style={styles.welcome}>
+        Drink More Water!
       </Text>
-
-      <Text style={styles.text} > Send a reminder in 5 seconds then every hour.</Text>
-      <Text style={styles.text} > Notifications are currently turned: {this.state.switch}</Text>
-
+      <View style={{height: 20}}> </View>
+      <Text style={styles.text} > Send yourself a reminder every hour.</Text>
+      <Text style={styles.textSmall} >*Between 9am-9pm. First reminder will be in 5 seconds.</Text>
+      <View style={{height: 10}}> </View>
+      <Text style={styles.textBold} > Notifications are currently turned: {this.state.switch}</Text>
+      <View style={{height: 10}}> </View>
+      </View>
+      <View style={{height: 40}}> </View>
       <TouchableHighlight
         onPress={this._turnOnButtonPress}
         style={styles.button}>
-        <Text style={styles.text}>
+        <Text style={styles.buttonText}>
           START NOTIFICATIONS
         </Text>
       </TouchableHighlight>
-
+      <View style={{height: 60}}> </View>
       <TouchableHighlight
         onPress={this._turnOffButtonPress}
         style={styles.button}>
-        <Text style={styles.text}>
+        <Text style={styles.buttonText}>
           TURN OFF NOTIFICATIONS
         </Text>
       </TouchableHighlight>
@@ -128,21 +132,58 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     fontFamily: 'San Francisco'
   },
-  button: {
+  textContainer: {
     color: '#042D9C',
     borderColor: '#042D9C',
-    borderRadius: 10,
-    borderWidth: 5,
-    padding: 5,
-    marginTop: 50,
+    alignSelf: 'stretch',
+    marginLeft: 30,
+    marginRight: 30,
+    justifyContent: 'center',
+    borderWidth: 3,
     backgroundColor: 'white',
+    borderRadius: 10,
+    width: 'auto',
+    fontFamily: 'San Francisco',
+    padding: 5
+  },
+  button: {
+    borderColor: '#042D9C',
+    alignSelf: 'stretch',
+    marginLeft: 60,
+    marginRight: 60,
+    justifyContent: 'center',
+    borderWidth: 3,
+    backgroundColor: '#042D9C',
+    borderRadius: 10,
+    width: 'auto',
+    fontFamily: 'San Francisco',
+    padding: 7
+  },
+  buttonText: {
+    color: 'white',
+    alignSelf: 'center',
     fontFamily: 'San Francisco'
   },
   text: {
     color: '#042D9C',
     backgroundColor: 'white',
-    fontFamily: 'San Francisco'
-  }
+    fontFamily: 'San Francisco',
+    alignSelf: 'center',
+  },
+  textBold: {
+    color: '#042D9C',
+    backgroundColor: 'white',
+    fontFamily: 'San Francisco',
+    alignSelf: 'center',
+    fontWeight: 'bold'
+  },
+  textSmall: {
+    color: '#042D9C',
+    backgroundColor: 'white',
+    fontFamily: 'San Francisco',
+    alignSelf: 'center',
+    fontSize: 8
+  },
 });
 
 export default CreateNotifications;

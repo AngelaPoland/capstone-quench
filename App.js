@@ -123,7 +123,7 @@ export default class App extends React.Component {
             <Scene
               key="Track"
               tabs={true}
-              tabBarStyle={{ backgroundColor: '#FFFFFF'}}
+              tabBarStyle={{ backgroundColor: '#FFFFFF', height: 40}}
               iconName="bar-chart"
               icon={TabIcon}
               activeBackgroundColor="#25abf9"
@@ -139,7 +139,7 @@ export default class App extends React.Component {
               <Scene key="ProgressReportTab2" title="Month Report" iconName="angle-double-right" icon={TabIcon} showLabel={false}>
                 <Scene key="report2"
                   component={ProgressReports2}
-                  title="Month"
+                  title="Month Report"
                   />
               </Scene>
             </Scene>
