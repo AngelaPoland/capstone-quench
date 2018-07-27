@@ -32,9 +32,10 @@ We all know that drinking water is essential for heathly living. Give me an ailm
 
 #### Future Features & Ideas:
 - User authentication with Firebase OAuth
+- More customization of factors contributing to water goal amount (such as exercise amount, local temp, pregnancy/health, etc)
 - Optimize for other screen sizes and Android
 - Update based on user timezone
-- Better puush notification customization
+- Better push notification customization - user can choose start and end times and their own frequency
 - More options beyond water fountains for finding free water sources
 
 
