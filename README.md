@@ -22,11 +22,11 @@ We all know that drinking water is essential for heathly living. Give me an ailm
 
 #### Technologies
 - Ruby on Rails
-- PostgreSQL
+- PostgreSQL Database
 - React Native / Javascript
+- Expo SDK
 - React Native Router Flux
-- Expo 
-- Axios
+- Axios (Promise based HTTP client for the browser and node.js)
 - React Native Chart Kit
 - NativeBase
 - Apple Maps
