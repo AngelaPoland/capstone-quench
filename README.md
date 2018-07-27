@@ -29,6 +29,8 @@ We all know that drinking water is essential for heathly living. Give me an ailm
 - Axios
 - React Native Chart Kit
 - NativeBase
+- Apple Maps
+- Firebase
 
 #### Future Features & Ideas:
 - User authentication with Firebase OAuth
