@@ -1,5 +1,9 @@
 # Quench
 
+[<img src="assets/splash.png" height="400">](http://www.youtube.com/watch?v=https://youtu.be/tB9IM3JWU2w "Quenched")
+
+Click image to see video of app in action!
+
 Water is the most underutilized tool when it comes to your health. From clearing your skin and helping with headaches to giving you an endless supply of energy, simply drinking enough H2O each day can save you a lot of money on skin care products, pain relievers and vitamins.
 
 We all know that drinking water is essential for heathly living. Give me an ailment and usually my first response will annoyingly be "Are you hydrated enough? Drink more water!" That's all well but it can be hard to know how much water you should be drinking and its too easy to forget to drink water throughout the day with our busy schedules. Sometimes, its even a matter of finding water when you're out and about (and who wants to BUY bottled water?! Tsk Tsk.) That's where this app comes in to help you stay hydrated which will in turn help you feel better throughout the day.
