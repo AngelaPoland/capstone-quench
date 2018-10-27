@@ -1,6 +1,6 @@
 # Quench
 
-[<img src="assets/splash.png" height="400">](http://www.youtube.com/watch?v=https://youtu.be/tB9IM3JWU2w "Quenched")
+[<img src="assets/splash.png" height="400">](https://www.youtube.com/watch?v=tB9IM3JWU2w&t=10s "Quenched")
 
 Click image to see video of app in action!
 
